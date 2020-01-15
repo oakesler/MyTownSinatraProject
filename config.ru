@@ -7,4 +7,6 @@ end
 use Rack::MethodOverride
 use Rack::Session::Cookie
 use SessionsController
+use PostsController
+use UsersControoler
 run ApplicationController
