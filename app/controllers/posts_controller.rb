@@ -8,10 +8,20 @@ class PostsController < ApplicationController
   #here is what you can't do if you're not logged in
   get 'posts/new' do
   #checking if they are logged in 
-    if session[:email].empty?
+    if !logged_in?
       redirect "/login"     #redirecting if they are not
     else 
       "A new post form" #rendering if they ARE
+    end
+  end
+  
+  
+  get '/posts/:id/edit' do
+    #checking if they are logged in 
+    if !logged_in?
+      redirect '/login' #redirecting if not logged in 
+    else 
+      "An edit post form" #taking them here if logged in 
     end
   end
 end
