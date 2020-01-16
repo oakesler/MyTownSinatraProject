@@ -22,8 +22,11 @@ class PostsController < ApplicationController
       redirect '/login' #redirecting if not logged in 
     else 
       #how do i find the posts that should only be edited by this user/author?
-      
-      "An edit post form" #taking them here if logged in 
+      if postie = current_user.posts.find_by(params[:id])
+        "An edit post form #{current_user.id} is editing #{post.id}" #taking them here if logged in
+      else 
+        redirect '/posts'
+      end
     end
   end
 end
