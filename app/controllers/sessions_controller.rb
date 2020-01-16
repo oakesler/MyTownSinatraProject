@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   post '/sessions' do 
     #log in a user with this email
     #old code: session[:email] = params[:email]
-    login[params[:email]]
+    login(params[:email], params[:password])
     redirect "/posts"
   end
   

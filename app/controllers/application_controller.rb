@@ -1,21 +1,30 @@
-class ApplicationController < Sinatra::Base  
-  
-  configure do 
+class ApplicationController < Sinatra::Base
+  configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "carcollection"
   end
   
- helpers do 
+helpers do 
+  def logged_in?
+    !!session[:email]
+  end
    
-   def logged_in?
-     !!session[:email]
-   end
-   
-   def login(email)
-     #is the user who they claim to be?
-     session[:email] = email
+  def login(email, password)
+    #is the user who they claim to be?
+    user = User.find_by(:email => email) 
+    if user && user.authenticate(password)
+      session[:email] = user.email
+    else
+      redirect "/login"
+    end
+  end
+      
+         
+        
+     #if i can find a user && can authenticate the password, then I will log them in 
+     
   end
   
   def logout
