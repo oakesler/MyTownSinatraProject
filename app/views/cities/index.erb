@@ -1,20 +1,10 @@
 <h3>Browse MyTown Guides by City:</h3>
 
-
-<h5>City</h5>
-<p>guide</p>
-<p>guide</p>
-<p>guide</p>
-
-<h5>City</h5>
-<p>guide</p>
-<p>guide</p>
-<p>guide</p>
-
-<h5>City</h5>
-<p>guide</p>
-<p>guide</p>
-<p>guide</p>
+<%@cities.each do |city|%>
+<p><%=city.name%></p>
+<%@guides.each do |guide|%>
+<%if guide.city_id == city_id%>
+<p><%=guide.name%> by <%=User.find(guide.user_id)%></p>
 
 <%#City.all each do |item|
 <a href = "/cities/<%=city.name%>" <%# >item.name</a>item.name
