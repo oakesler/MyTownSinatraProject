@@ -26,6 +26,8 @@ class UsersController < ApplicationController
     if !@user.name
       erb :"users/new"
       elsif @user.guides.count == 0 || nil
+      @cities = City.all
+      @locations = Location.all
       erb :"guides/new"
     else
       erb :"users/profile"
