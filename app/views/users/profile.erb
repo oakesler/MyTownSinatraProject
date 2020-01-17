@@ -1,15 +1,20 @@
 <h3>Your Profile</h3>
 
-<p>"Name: #{@current_user.name}"</p>
+<p>"Name: {@current_user.name}"</p>
 <p>"Bio: Bio"</p>
 
-<h4>"Your Guides:"</h4>
+<a href="/users/#{user.id}/edit">Edit profile</a>
+
+<%#<h4>"Your Guides:"</h4>
 <% @current_user.guides each do |item| %>
-<p><%=item.name%></p>
-<a href="/guides/<%=item.id%>/edit">Edit</a> <a href="/guides/<%=item.id%>/delete">Delete</a>
-<%end%>
+<%#<p><%=item.name%></p>
+<%#<a href="/guides/<%=item.id%>
+<%#/edit">Edit</a> <a href="/guides/<%=item.id%>/delete">Delete</a>
+<%#<%end%>
 
+<p>Guide #1</p> <a>Edit</a> <a>Delete</a>
+<p>Guide #2</p> <a>Edit</a> <a>Delete</a>
+<p>Guide #3</p> <a>Edit</a> <a>Delete</a>
 
-
-
-"Guide #2"
+<a href="/cities">Guides by City</a>
+<a href="/guides">Guides by User</a>
