@@ -4,9 +4,10 @@ class SessionsController < ApplicationController
     erb :"sessions/login.html"
   end
   
-   post '/sessions' do 
+  post '/sessions' do 
     login(params[:email], params[:password])
-    redirect "/profile"
+    @user = User.find_by(:email => session[:email]) 
+    redirect "users/#{@user.id}/"
   end
   
   #post '/sessions' do 
