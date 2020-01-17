@@ -25,5 +25,10 @@ class UsersController < ApplicationController
     erb :"users/profiles"
   end
   
+  get '/user/:id/edit' do 
+    @user = User.find(params[:id])
+    #do we use current_user here?
+    erb :"users/edit.erb"
+  end
 end 
   
