@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   get '/users/:id/' do
     @user = User.find(params[:id])
     if !@user.name
-      erb "users/new"
+      erb :"users/new"
     else 
       erb :"users/profile"
     end

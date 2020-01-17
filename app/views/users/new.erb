@@ -1,5 +1,15 @@
-<h3>Set Up Your Profile!</h3>
+<h1>Set Up Your Profile!</h1>
 
-<p>Name: _________________</p>
-
-<p>Bio: __________________</p>
+<form action="/guides/<%=@user.id%>/new" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+  </p>
+  <p>
+    <label for="bio">Bio:</label>
+    <input type="text" name="bio" id="bio" />
+  </p>
+  
+  <input type="submit" />
+  
+</form>
