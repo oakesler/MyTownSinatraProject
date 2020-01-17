@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @user.name = params[:name]
     @user.bio = params[:bio]
     @user.save
+    @cities = City.all
     erb :"guides/new"
   end
     

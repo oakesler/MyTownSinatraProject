@@ -1,22 +1,43 @@
 <h3><%=@user.name%></h3>
+<h2>Create a New Guide!</h2>
 
-<h3>Make a New Guide!</h3>
+<h5>First, enter or select your city...</h5>
 
-<p>Guide Name: ____________</p>
-<p>Guide City: ____________</p>
+ <p>New City:</p>
+<form action="/users/<%=@user.id%>" method="POST">
+  <input type="text" name= "city" id="city_name" placeholder="Name:">
+  
+  <p>Existing Cities:</p>
+  <% @cities.each do |city| %>
+  <input type="checkbox" name="cities[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
+  <% end %>
+  <br>
+  
+  
+  <h3>New Title</h3>
+  <label>Title: </label>
+  <br>
+  <input type="text" name="title[name]" id="new_title"></input>
+  
+  <p>Select an existing landmark or create a new one below.</p>
+  
+  <h3>Existing Landmarks</h3>
+  <% @landmarks.each do |item| %>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <br>
+  <% end %>
+  <br>
+ 
+  <h3>New Landmark</h3>
+  <label>Name: </label>
+  <br>
+  <input type="text" name="landmark[name]" id="new_landmark"></input>
+  <label>Year:</label>
+  <input type="text" name="landmark[year_completed]" id="landmark_year"></input>
+  <br><br>
+  
+  <input type="submit" value="Create New Figure">
+</form>
 
-<p> or, select from the list</p>
-<p>city name</p>
-<p>city name</p>
-<p>city name</p>
-
-<p>Guide Description: ________________</p>
-
-<p>Add Locations</p>
-
-<p>location form</p>
-<p>location form</p>
-<p>location form</p>
-<p>location form</p>
-<p>location form</p>
-<p>location form</p>
+<a class="button" href="/landmarks">Landmarks</a>
+<a class="button" href="/">Home</a>
