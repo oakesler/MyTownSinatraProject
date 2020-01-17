@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   
    post '/sessions' do 
     login(params[:email], params[:password])
-    redirect "/guides"
+    redirect "/profile"
   end
   
   #post '/sessions' do 

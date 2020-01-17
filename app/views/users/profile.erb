@@ -6,7 +6,7 @@
 <h4>"Your Guides:"</h4>
 <% @current_user.guides each do |item| %>
 <p><%=item.name%></p>
-<a href="/guides/edit">Edit</a> <a href="/guides/delete">Delete</a>
+<a href="/guides/<%=item.id%>/edit">Edit</a> <a href="/guides/<%=item.id%>/delete">Delete</a>
 <%end%>
 
 
