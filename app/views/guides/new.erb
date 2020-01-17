@@ -4,40 +4,47 @@
 <h5>First, enter or select your city...</h5>
 
  <p>New City:</p>
+ 
 <form action="/users/<%=@user.id%>" method="POST">
-  <input type="text" name= "city" id="city_name" placeholder="Name:">
+  <input type="text" name= "city[name]" id="new_city_name" placeholder="Name:">
   
   <p>Existing Cities:</p>
   <% @cities.each do |city| %>
-  <input type="checkbox" name="cities[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
+  <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
   <% end %>
   <br>
   
+  <h5>Now start adding locations and descriptions! (minimum three)</h5>
   
-  <h3>New Title</h3>
-  <label>Title: </label>
+  
+  <p>New Location Name</p>
+  <label>Name: </label>
   <br>
-  <input type="text" name="title[name]" id="new_title"></input>
+  <input type="text" name="location[name]" id="new_location_name"></input>
   
-  <p>Select an existing landmark or create a new one below.</p>
-  
-  <h3>Existing Landmarks</h3>
-  <% @landmarks.each do |item| %>
-    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+  <h3>Existing Location Names</h3>
+  <% @locations.each do |item| %>
+    <input type="checkbox" name="locations[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
   <br>
- 
-  <h3>New Landmark</h3>
-  <label>Name: </label>
-  <br>
-  <input type="text" name="landmark[name]" id="new_landmark"></input>
-  <label>Year:</label>
-  <input type="text" name="landmark[year_completed]" id="landmark_year"></input>
-  <br><br>
   
-  <input type="submit" value="Create New Figure">
+  <p>New Location Address/Zipcode</p>
+  <label>Address/Zipcode</label>
+  <br>
+  <input type="text" name="location[address]" id="new_location_address"></input>
+   
+  <h3>Existing Location Addresses/Zipcodes</h3>
+  <% @locations.each do |item| %>
+    <input type="checkbox" name="locations[location_address_ids][]" id="location_address_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <br>
+  <% end %>
+  <br>
+  
+  <p>New Location Description:</p>
+  <label>Description:</label>
+  <br>
+  <input type="text" name="location[description]" id="new_location_description"></input>
+  
+  <input type="submit" value="Create New Guide">
 </form>
-
-<a class="button" href="/landmarks">Landmarks</a>
-<a class="button" href="/">Home</a>
