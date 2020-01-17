@@ -6,13 +6,18 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "carcollection"
   end
   
+  get '/' do 
+    erb :index
+  end
+  
 helpers do 
   def logged_in?
     !!current_user
   end
   
   def current_user
-    @current_user ||= User.find_by(:email => session[:email]) if session[:email])
+    @current_user ||= User.find_by(:email => session[:email]) if session([:email])
+  end
    
   def login(email, password)
     #is the user who they claim to be?
@@ -30,6 +35,5 @@ helpers do
     #emailing them to let them know they logged out
     redirect "/posts"
   end
-   
  end
 end

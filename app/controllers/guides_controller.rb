@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   
-  get '/posts' do
-    "A list of publically available posts"
-    "You are logged in as #{session[:email]}"
+  
+  get "/profile" do 
+    erb :"users/profile"
+  end
+    
+  get '/guides' do
+    erb :"guides/index"
+    #Guides.all
   end 
   
   #here is what you can't do if you're not logged in
@@ -16,7 +21,7 @@ class PostsController < ApplicationController
   #end
   
   
-  get '/posts/:id/edit' do
+  get '/guides/:id/edit' do
     #checking if they are logged in 
     if !logged_in?
       redirect '/login' #redirecting if not logged in 

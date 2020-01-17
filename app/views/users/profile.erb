@@ -1,0 +1,15 @@
+<h3>Your Profile</h3>
+
+<p>"Name: #{@current_user.name}"</p>
+<p>"Bio: Bio"</p>
+
+<h4>"Your Guides:"</h4>
+<% @current_user.guides each do |item| %>
+<p><%=item.name%></p>
+<a href="/guides/edit">Edit</a> <a href="/guides/delete">Delete</a>
+<%end%>
+
+
+
+
+"Guide #2"
