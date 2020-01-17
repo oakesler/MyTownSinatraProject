@@ -25,13 +25,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if !@user.name
       erb :"users/new"
-    else 
+      elsif @user.guides.count == 0 || nil
+      erb :"guides/new"
+    else
       erb :"users/profile"
     end
   end
   
   post '/users/:id' do 
     @user = User.find(params[:id])
+    @params = params
     erb :"users/profile"
   end
   
