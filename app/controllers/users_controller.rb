@@ -17,6 +17,13 @@ class UsersController < ApplicationController
   end
   ##########THIS IS ALL SIGN UP ###################
   
+  post '/user/:id' do 
+    erb :"users/profile"
+  end
+  
+  get '/users' do 
+    erb :"users/profiles"
+  end
   
 end 
   
