@@ -16,5 +16,7 @@ class UsersController < ApplicationController
     end
   end
   ##########THIS IS ALL SIGN UP ###################
+  
+  
 end 
   

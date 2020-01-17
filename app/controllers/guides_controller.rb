@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   
-  
-  get "/profile" do 
-    erb :"users/profile"
+  get "/profiles" do 
+    erb :"users/profiles"
   end
+  
+  get "/profiles/:id" do 
+    erb: 
     
   get '/guides' do
     erb :"guides/index"
@@ -23,4 +25,6 @@ class PostsController < ApplicationController
       end
     end
   end
+  
+  
 end
