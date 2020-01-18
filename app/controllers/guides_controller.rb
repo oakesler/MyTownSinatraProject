@@ -80,17 +80,19 @@ end
     a = {}
     @user = User.find(params[:id])
     @guide = Guide.find_by(user_id: params[:id])
-    if @user.name != params["figure"]["name"]
+    if !!params["guide"]["name"]
       a[:name] = params["figure"]["name"]
-      @figure.update(a)
+      @guide.update(a)
     end
     b = {}
-    if params[:figure].keys.include?("title_ids")
+    if !!params[:city].keys.include?("city_ids")
       b[:title_ids] = params["figure"]["title_ids"]
       @figure.update(b)
     end
-    if params["figure"]["title"] != ""
-      @figure.titles << Title.new(name: params["figure"]["title"])
+    if !!params["guide"]["city_name"]
+    #if params["guide"]["city"] != ""
+      City.new(name: params["figure"]["title"])
+      @guide.city_id << City.new(name: params["figure"]["title"])
     end
     c = {}
     if @landmark.name != params["landmark"]["name"]
