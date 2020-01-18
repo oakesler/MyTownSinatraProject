@@ -26,49 +26,55 @@ class GuidesController < ApplicationController
       @city.save
     end
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    if !!params[:location_type_ids]
-      @location_type = LocationType.find(params[:location_type_ids][0])
+    #-------------------------------------------------------------------#
+    #LOCATION 1
+    if !!params["location_one"][["location_type_ids"]
+      @location_type_1 = LocationType.find(params[:location_type_ids][0])
     else 
-      @location_type = LocationType.create(params["location_1"]["location_type"])
+      @location_type_1 = LocationType.create(params["location_1"]["location_type"])
     end
-    @location_type.save
+    @location_type_1.save
     if params[:location_1].keys.include?("location_name_ids")
       params["location_1"]["location_name_ids"].each do |item|
-        @location_1 = Location.find(item)
+        temp_location= Location.find(item)
+        @location_one = Location.create(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, description: params["location_1"]["description"], location_type_id: params["location_1"]["location_type"])
       end
     else 
-      @location = Location.create 
-    
-    
-    @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    
-    
-    
-        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, description: params["location_1"]["description"]), location_type_id: params["location_1"]["location_type"]
+      @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, description: params["location_1"]["description"], location_type_id: params["location_1"]["location_type"])
+    end
+    @location_1.save
+    #-------------------------------------------------------------------#
+    #LOCATION 2
+    if !!params["location_two"][["location_type_ids"]
+      @location_type_two = LocationType.find(params[:location_type_ids][0])
+    else 
+      @location_type_two = LocationType.create(params["location_2"]["location_type"])
+    end
+    @location_type_two.save
+    if params[:location_2].keys.include?("location_name_ids")
+      params["location_2"]["location_name_ids"].each do |item|
+        temp_location= Location.find(item)
+        @location_two = Location.create(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, description: params["location_2"]["description"], location_type_id: params["location_2"]["location_type"])
       end
     else 
-      @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+      @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, description: params["location_2"]["description"], location_type_id: params["location_2"]["location_type"])
     end
     @location_2.save
     #-------------------------------------------------------------------#
-    if params[:location_1].keys.include?("location_name_ids")
-      params["location_1"]["location_name_ids"].each do |item|
-        temp_location = Location.find(item)
-        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
-      end
+    #LOCATION 3
+    if !!params["location_two"][["location_type_ids"]
+      @location_type_three = LocationType.find(params["location_3"]["location_type_ids"][0])
     else 
-      @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_2"]["type"])
+      @location_type_three = LocationType.create(params["location_3"]["location_type"])
     end
-    @location_2.save
-    #-------------------------------------------------------------------#
+    @location_type_three.save
     if params[:location_3].keys.include?("location_name_ids")
       params["location_3"]["location_name_ids"].each do |item|
-        temp_location = Location.find(item)
-        @location_3 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+        temp_location= Location.find(item)
+        @location_3 = Location.create(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, description: params["location_3"]["description"], location_type_id: params["location_3"]["location_type"])
       end
     else 
-      @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_3"]["type"])
-      @location_3.save
+      @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, description: params["location_3"]["description"], location_type_id: params["location_3"]["location_type"])
     end
     @location_3.save
     @guide.save
