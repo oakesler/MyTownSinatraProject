@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class GuidesController < ApplicationController
     
   get '/guides' do
     @guides = Guide.all
@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   end 
   
   #these next two might be in the wrong order...
+  get '/guides/new' do
+    erb :"guides/new"
+  end
   
   post '/guides/:id/new' do
     @user = User.find(params[:id])
