@@ -1,22 +1,45 @@
-<h3><%=@params%></h3>
-
-<h3>Profile</h3>
-
-<h4>Name: <%=@user.name%></h4>
-<h4>Bio: <%=@user.bio%></h4>
-
-<h3>Guides:</h3>
-
 <%if session[:email] == @user.email%>
-<a href="/guides/:id/new">Create a New Guide</a>
-<%@user.guides each do |guide|%>
-<a href="/guides/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
-<a href="/guides/<%=@guide.id%>/edit">Edit/Delete</a>
-<br>
-<% end %>
-
-<a href="users/<%=@user.id%>/edit">Edit Profile</a>
-
-<a href="/cities">Explore Cities</a>
-<a href="/guides">Explore Users</a>
-<a href="/locations">Explore Locations</a>
+  <h2>Hey, <%=@user.name%>, Welcome back!</h2>
+  <br>
+  <h3>Your Profile:</h3>
+  <h5>Name: <%=@user.name%></h5>
+  <h5>Bio: <%=@user.bio%></h5>
+  <a href="users/:id/edit">Edit Profile</a>
+  <br>
+  <br>
+  <a href="/guides/:id/new">Create a New Guide</a>
+  <br>
+  <br>
+  <h3>Your Guides:</h3>
+  <%if @user.guides.count == 0%>
+  <h6>Click "Create a New Guide" to start!"</h6>
+  <%else%>
+  <%@user.guides.each do |guide|%>
+  <a href="/guides/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
+  <a href="/guides/<%=@guide.id%>/edit">Edit/Delete</a>
+  <br>
+  <%end%>
+  <%end%>
+<%else%>
+  <h2><%=@user.name%>'s Profile</h2>
+  <br>
+  <br>
+  <h5>Name: <%=@user.name%></h5>
+  <h5>Bio: <%=@user.bio%></h5>
+  <br>
+  <br>
+  <%if user.guides.count == 0%>
+  <h6>Looks like <%=@user.name%> hasn't made any guides yet!</h6>
+  <%else%>
+  <%@user.guides.each do |guide|%>
+  <a href="/guides/view/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
+  <%end%>
+  <%end%>
+<%end%>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="/cities">Explore Cities</a>
+  <a href="/guides">Explore Users</a>
+  <a href="/locations">Explore Locations</a>
