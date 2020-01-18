@@ -1,4 +1,3 @@
-<p><%=@user.id%></p>
 <%if session[:email] == @user.email%>
   <h2>Hey, <%=@user.name%>, Welcome back!</h2>
   <br>
@@ -16,8 +15,10 @@
   <h6>Click "Create a New Guide" to start!"</h6>
   <%else%>
   <%@user.guides.each do |guide|%>
-  <a href="/guides/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
-  <a href="/guides/<%=@guide.id%>/edit">Edit/Delete</a>
+  
+  <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a>
+  
+  <a href="/guides/<%=guide.id%>/edit">Edit/Delete</a>
   <br>
   <%end%>
   <%end%>

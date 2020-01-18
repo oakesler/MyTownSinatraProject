@@ -4,7 +4,6 @@ class GuidesController < ApplicationController
     @guides = Guide.all
     @cities = City.all
     @users = User.all
-    
     erb :"guides/index"
   end 
   
@@ -13,6 +12,14 @@ class GuidesController < ApplicationController
     #@user = User.find_by(name: params[:user])
     #erb :
   #end
+  
+  get "/guides/:id" do 
+    binding.pry
+    @guide = Guide.find(params[:id])
+    @user = User.find(@guide.user_id)
+    @city = City.find(@guide.city_id)
+    erb :"guides/view"
+  end
     
   post "/guides/:id" do 
     #binding.pry
@@ -28,7 +35,7 @@ class GuidesController < ApplicationController
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
     #-------------------------------------------------------------------#
     #LOCATION 1
-    if !!params["location_one"][["location_type_ids"]
+    if !!params["location_one"]["location_type_ids"]
       @location_type_1 = LocationType.find(params[:location_type_ids][0])
     else 
       @location_type_1 = LocationType.create(params["location_1"]["location_type"])
@@ -45,7 +52,7 @@ class GuidesController < ApplicationController
     @location_1.save
     #-------------------------------------------------------------------#
     #LOCATION 2
-    if !!params["location_two"][["location_type_ids"]
+    if !!params["location_two"]["location_type_ids"]
       @location_type_two = LocationType.find(params[:location_type_ids][0])
     else 
       @location_type_two = LocationType.create(params["location_2"]["location_type"])
@@ -62,7 +69,7 @@ class GuidesController < ApplicationController
     @location_2.save
     #-------------------------------------------------------------------#
     #LOCATION 3
-    if !!params["location_two"][["location_type_ids"]
+    if !!params["location_three"]["location_type_ids"]
       @location_type_three = LocationType.find(params["location_3"]["location_type_ids"][0])
     else 
       @location_type_three = LocationType.create(params["location_3"]["location_type"])
@@ -80,8 +87,6 @@ class GuidesController < ApplicationController
     @guide.save
     erb :"guides/view"
   end
- 
-  #-#-#-#
   
   get '/guides/:id/new' do
     @user = User.find(params[:id])
