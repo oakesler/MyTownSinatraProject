@@ -60,14 +60,12 @@ class GuidesController < ApplicationController
     erb :"guides/view"
   end
   
-  post '/guides/:id/new' do
+  get '/guides/:id/new' do
     @user = User.find(params[:id])
     erb :"guides/new"
   end
-  
-  post 'guides/view/:id' do 
-    
-end
+  #-#-#-#-
+ 
   
   #post ':user/guides/new' do
     #@user = User.find(params[:id])

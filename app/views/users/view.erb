@@ -1,13 +1,14 @@
+<p><%=@user.id%></p>
 <%if session[:email] == @user.email%>
   <h2>Hey, <%=@user.name%>, Welcome back!</h2>
   <br>
   <h3>Your Profile:</h3>
   <h5>Name: <%=@user.name%></h5>
   <h5>Bio: <%=@user.bio%></h5>
-  <a href="users/:id/edit">Edit Profile</a>
+  <a href="users/<%=@user.id%>/edit">Edit Profile</a>
   <br>
   <br>
-  <a href="/guides/:id/new">Create a New Guide</a>
+  <a href="/guides/<%=@user.id%>/new">Create a New Guide</a>
   <br>
   <br>
   <h3>Your Guides:</h3>

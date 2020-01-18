@@ -9,3 +9,12 @@
 <%end%>
 <%end%>
 <%end%>
+
+<%if !!session[:email]%>
+<%@user = User.find_by(email: session[:email])%>
+
+<a href="/users/<%=@user.id%>/">Return to Profile</a>
+<a href="/locations">Explore all Locations</a>
+<%else%>
+<a href="/locations">Explore all Locations</a>
+<%end%>
