@@ -37,24 +37,40 @@ class UsersController < ApplicationController
   ##############################
   post '/users/:id' do 
     @user = User.find(params[:id])
+    if params[:city].keys.include?("city_ids")
+      params["city"]["city_ids"].each do |item|
+        @city = City.find(item)
+      end
+    else
+      @city = City.new(name: params["city"]["name"])
+    end
+    @city.save
+    @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
+    if params[:location_1].keys.include?("location_name_ids")
+      
+      
+    @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+    
+    
+    
+    
+    
+    
+    if params[:city].keys.include?("city_ids")
+        
+  
+    if params[:figure].keys.include?("title_ids")
+      params["figure"]["title_ids"].each do |item|
+        @title = Title.find(item)
+        @figure.titles << @title
+      end
+    end
     @city = City.new(name: params["city"]["name"])
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id)
-    @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id )
-    @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id)
-    
-    #t.string :name 
-    #t.string :address 
-      #t.integer :city_id
-      #t.integer :user_id
-      #t.integer :guide_id
-      t.string :type
-    
-    
-    
-    
-    
-    
+    @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+    @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_2"]["type"])
+    @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_3"]["type"])
+
     @params = params
     erb :"users/profile"
   end

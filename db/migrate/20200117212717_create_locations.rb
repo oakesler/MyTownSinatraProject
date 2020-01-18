@@ -6,7 +6,9 @@ class CreateLocations < ActiveRecord::Migration
       t.integer :city_id
       t.integer :user_id
       t.integer :guide_id
+      ###
       t.string :type
+      ####
     end
   end
 end
