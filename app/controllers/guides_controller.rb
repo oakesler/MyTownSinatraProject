@@ -15,14 +15,14 @@ class GuidesController < ApplicationController
     erb :"guides/new"
   end
   
-  post ':user/guides/new' do
-    @user = User.find(params[:id])
-    @user.name = params[:name]
-    @user.bio = params[:bio]
-    @user.save
-    @cities = City.all
-    erb :"guides/new"
-  end
+  #post ':user/guides/new' do
+    #@user = User.find(params[:id])
+    #@user.name = params[:name]
+    #@user.bio = params[:bio]
+    #@user.save
+    #@cities = City.all
+    #erb :"guides/new"
+  #end
     
   
   post '/guides/:id' do 

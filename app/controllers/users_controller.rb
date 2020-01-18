@@ -20,17 +20,14 @@ class UsersController < ApplicationController
     erb :"users/index"
   end
   
+  post "/users/:user"
+  
   get '/users/:id/' do
     @user = User.find(params[:id])
     if !@user.name
       erb :"users/new"
-      elsif @user.guides.count == 0 || nil
-      @cities = City.all
-      @locations = Location.all
-      @location_types = LocationType.all
-      erb :"guides/new"
-    else
-      erb :"users/profile"
+    else 
+      erb :"users/view"
     end
   end
   
