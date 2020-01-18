@@ -15,21 +15,36 @@ class GuidesController < ApplicationController
   #end
     
   post "/guides/:id" do 
+    #binding.pry
     @user = User.find(params[:id])
     if params[:city].keys.include?("city_ids")
       params["city"]["city_ids"].each do |item|
         @city = City.find(item)
       end
     else
-      @city = City.new(name: params["city"]["name"])
+      @city = City.create(name: params["city"]["name"])
+      @city.save
     end
-    @city.save
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    @guide.save
+    if !!params[:location_type_ids]
+      @location_type = LocationType.find(params[:location_type_ids][0])
+    else 
+      @location_type = LocationType.create(params["location_1"]["location_type"])
+    end
+    @location_type.save
     if params[:location_1].keys.include?("location_name_ids")
       params["location_1"]["location_name_ids"].each do |item|
-        temp_location = Location.find(item)
-        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+        @location_1 = Location.find(item)
+      end
+    else 
+      @location = Location.create 
+    
+    
+    @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
+    
+    
+    
+        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, description: params["location_1"]["description"]), location_type_id: params["location_1"]["location_type"]
       end
     else 
       @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
@@ -56,12 +71,17 @@ class GuidesController < ApplicationController
       @location_3.save
     end
     @location_3.save
-    @params = params
+    @guide.save
     erb :"guides/view"
   end
+ 
+  #-#-#-#
   
   get '/guides/:id/new' do
     @user = User.find(params[:id])
+    @cities = City.all
+    @locations = Location.all
+    @location_types = LocationType.all
     erb :"guides/new"
   end
   #-#-#-#-

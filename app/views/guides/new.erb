@@ -109,3 +109,13 @@
   <input type="submit" value="Create New Guide">
   
 </form>
+<br>
+
+<%if !!session[:email]%>
+<%@user = User.find_by(email: session[:email])%>
+
+<a href="/users/<%=@user.id%>/">Return to Profile</a>
+<a href="/guides">Explore all Guides</a>
+<%else%>
+<a href="/guides">Explore all Guides</a>
+<%end%>
