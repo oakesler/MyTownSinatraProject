@@ -2,7 +2,15 @@
 <br>
 <h3><%=@user.name%>'s Guide to <%=@city.name%></h2>
 
-<%@locations each do |place|%>
+<%@guide.locations each do |place|%>
 <p><%=place.name%></p>
+<p>Category: <%=place.location_type%></p>
 <p><%=place.address%></p>
-<p><%=place.notes%></p>
+<p><%=place.description%></p>
+<br>
+<%end%>
+
+<%if session[:email] == @user[:email]%>
+<a href="/guides/edit/:id">Edit this Guide</a>
+<a href="/users/view/:id">Return to Profile</a>
+<a href="/guides">Explore all Guides</a>

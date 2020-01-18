@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200118082005) do
+ActiveRecord::Schema.define(version: 20200118082300) do
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20200118082005) do
     t.integer "guide_id"
     t.string  "type"
     t.string  "notes"
+    t.text    "description"
   end
 
   create_table "posts", force: :cascade do |t|
