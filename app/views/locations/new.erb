@@ -3,9 +3,8 @@
 <h4>New Location </h4>
   
   
-  <form action="/guides/view/<%=@user.id%>" method="POST">
+  <form action="/locations/view/<%=@guide.id%>" method="POST">
   <br>
- <h4>Location #1</h4>
   
   <input type="text" name="location_1[name]" id="new_location_name_1" placeholder="Location Name:"></input>
   
@@ -38,5 +37,8 @@
   <input type="submit" value="Add New Location">
 
   </form>
+  
+  <a href="/users/view/<%=@user.id%>">Back to Profile</a>
+  <a>Explore All Guides</a>
   
 
