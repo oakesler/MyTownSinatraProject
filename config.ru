@@ -9,3 +9,6 @@ use SessionsController
 use PostsController
 use UsersController
 run ApplicationController
+use CitiesController
+use GuidesController
+use LocationsController

@@ -1,9 +1,7 @@
-class CityController < Sinatra::Base
+class CitiesController < Sinatra::Base
   
-  get "/cities" do 
-    @guides = Guide.all
-    @users = User.all
+  get "/cities" do
     @cities = City.all
-    erb :"cities/index"
+    erb :"cities/all"
   end
 end
