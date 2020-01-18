@@ -1,8 +1,8 @@
-<h3>Browse Guides (by User)</h3>
-
-<%#User.all each do |person|
-<p>person</p>
-person.guides each do |guide|
-<p>guide.name</p>
-end
-end
+<h2>Browse Guides (by City)</h2>
+<%@cities.each do |city|%>
+<h6><%=city.name%></h6>
+<%@guides.each do |guide|%>
+<%if guide.city == city %>
+<a href="/guide/<%=guide.id%>"><%=guide.user%>'s <%=guide.name%></a>
+<%end%>
+<%end%>

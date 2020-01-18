@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
     
   get '/guides' do
+    @guides = Guide.all
+    @cities = City.all
     erb :"guides/index"
-    #Guides.all
   end 
   
   #these next two might be in the wrong order...
