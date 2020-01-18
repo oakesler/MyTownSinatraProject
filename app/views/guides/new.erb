@@ -43,11 +43,6 @@
   <br>
   <input type="text" name="location_1[address]" id="new_location_address_1"></input>
    
-  <h3>Existing Location Addresses/Zipcodes</h3>
-  <% @locations.each do |item| %>
-    <input type="checkbox" name="location_1[location_address_ids][]" id="location_address_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
-  <% end %>
   <br>
   
   <p>New Location Description:</p>
@@ -61,8 +56,8 @@
   <br>
   <input type="text" name="location_1[type]" id="new_location_type_1"></input>
    
-  <h3>Existing Location Addresses/Zipcodes</h3>
-  <% @locations.each do |item| %>
+  <h3>Existing Location Types</h3>
+  <% @location_types.each do |item| %>
     <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
@@ -88,18 +83,26 @@
   <label>Address/Zipcode</label>
   <br>
   <input type="text" name="location_2[address]" id="new_location_address_2"></input>
-   
-  <h3>Existing Location Addresses/Zipcodes</h3>
-  <% @locations.each do |item| %>
-    <input type="checkbox" name="location_2[location_address_ids][]" id="location_address_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
-  <% end %>
+  
   <br>
   
   <p>New Location Description:</p>
   <label>Description:</label>
   <br>
   <input type="text" name="location_2[description]" id="new_location_description_2"></input>
+  
+  <h7>Almost done! Create or select a location type:</h7>
+  
+  <label>Location Type:</label>
+  <br>
+  <input type="text" name="location_2[type]" id="new_location_type_2"></input>
+   
+  <h3>Existing Location Types</h3>
+  <% @location_types.each do |item| %>
+    <input type="checkbox" name="location_2[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <br>
+  <% end %>
+  <br>
   
   <%#---------------------------------------------------------------------------------------------------%>
   
@@ -122,17 +125,26 @@
   <br>
   <input type="text" name="location_3[address]" id="new_location_address_3"></input>
    
-  <h3>Existing Location Addresses/Zipcodes</h3>
-  <% @locations.each do |item| %>
-    <input type="checkbox" name="location_3[location_address_ids][]" id="location_address_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
-  <% end %>
   <br>
   
   <p>New Location Description:</p>
   <label>Description:</label>
   <br>
   <input type="text" name="location_3[description]" id="new_location_description_3"></input>
+  
+  
+  <h7>Almost done! Create or select a location type:</h7>
+  
+  <label>Location Type:</label>
+  <br>
+  <input type="text" name="location_3[type]" id="new_location_type_3"></input>
+   
+  <h3>Existing Location Types</h3>
+  <% @location_types.each do |item| %>
+    <input type="checkbox" name="location_3[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <br>
+  <% end %>
+  <br>
   
   <input type="submit" value="Create New Guide">
   
