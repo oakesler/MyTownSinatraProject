@@ -1,22 +1,19 @@
 <h3><%=@params%></h3>
 
-<h3><%=@user%>Profile</h3>
+<h3>Profile</h3>
 
-<p>"Name: {@current_user.name}"</p>
-<p>"Bio: Bio"</p>
+<h4>Name: <%=@user.name%></h4>
+<h4>Bio: <%=@user.bio%></h4>
 
-<%#<a href="/users/#{user.id}/edit">Edit profile</a>
+<h3>Guides:</h3>
 
-<%#<h4>"Your Guides:"</h4>
-<% @current_user.guides each do |item| %>
-<%#<p><%=item.name%></p>
-<%#<a href="/guides/<%=item.id%>
-<%#/edit">Edit</a> <a href="/guides/<%=item.id%>/delete">Delete</a>
-<%#<%end%>
+<%@user.guides each do |guide|%>
+<a href="/guides/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
+<a href="/guides/<%=@guide.id%>/edit">Edit/Delete</a>
+<br>
+<% end %>
 
-<p>Guide #1</p> <a>Edit</a> <a>Delete</a>
-<p>Guide #2</p> <a>Edit</a> <a>Delete</a>
-<p>Guide #3</p> <a>Edit</a> <a>Delete</a>
+<a href="users/<%=@user.id%>/edit">Edit Profile</a>
 
-<a href="/cities">Guides by City</a>
-<a href="/guides">Guides by User</a>
+<a href="guides/">Guides By City</a>
+<a href="users/">Guides By User</a>

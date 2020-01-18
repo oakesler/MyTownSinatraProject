@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  ########## THIS IS ALL SIGN UP ###############
   get '/signup' do 
     erb :'users/new.html'
   end
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
       erb :"users/profile"
     end
   end
-  ##############################
+  
   post '/users/:id' do 
     @user = User.find(params[:id])
     if params[:city].keys.include?("city_ids")
