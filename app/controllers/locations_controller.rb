@@ -1,6 +1,6 @@
 class LocationsController < Sinatra::Base 
   
-  get '/cities' do 
+  get '/locations' do 
     erb :"locations/index"
   end
   

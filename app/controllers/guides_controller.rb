@@ -7,11 +7,15 @@ class GuidesController < ApplicationController
   end 
   
   #these next two might be in the wrong order...
+  get '/:user/guides' do 
+    @user = User.find_by(name: params[:user])
+    erb :
+  
   get '/guides/new' do
     erb :"guides/new"
   end
   
-  post '/guides/:id/new' do
+  post ':user/guides/new' do
     @user = User.find(params[:id])
     @user.name = params[:name]
     @user.bio = params[:bio]
