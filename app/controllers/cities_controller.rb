@@ -1,7 +1,7 @@
-class CitiesController < Sinatra::Base
+class CitiesController < ApplicationController
   
   get "/cities" do
     @cities = City.all
-    erb :"cities/all"
+    erb :"cities/index"
   end
 end

@@ -1,6 +1,9 @@
-class LocationsController < Sinatra::Base 
+class LocationsController < ApplicationController
   
-  get '/locations' do 
+  get '/locations' do
+    @types = LocationType.all
+    @locations = Location.all
+    @users = User.all
     erb :"locations/index"
   end
   

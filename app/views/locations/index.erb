@@ -1,6 +1,6 @@
 <h2>All Locations(by Type)</h2>
 
-<%@location_types.each do |type|%>
+<%@types.each do |type|%>
 <h6><%=type.name%></h6>
   <%@locations.each do |place|%>
     <%if place.type == type.id%>
@@ -13,8 +13,13 @@
     <%end%>
     <%end%>
     
-<%if session[:email] == @user[:email]%>
-<a href="/users/view/:id">Return to Profile</a>
+<%if !!session[:email]%>
+<%@user = User.find_by(email: session[:email])%>
+
+<a href="/users/<%=@user.id%>/">Return to Profile</a>
 <a href="/guides">Explore all Guides</a>
+<%else%>
+<a href="/guides">Explore all Guides</a>
+<%end%>
 
   

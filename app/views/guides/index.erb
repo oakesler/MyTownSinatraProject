@@ -4,6 +4,8 @@
 <h6><%=city.name%></h6>
 <%@guides.each do |guide|%>
 <%if guide.city == city %>
-<a href="/guide/<%=guide.id%>"><%=guide.user%>'s <%=guide.name%></a>
+
+<a href="/guides/<%=guide.id%>> <%=guide.user%>'s Guide <%=guide.name%></a>
+<%end%>
 <%end%>
 <%end%>

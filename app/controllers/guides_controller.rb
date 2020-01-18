@@ -3,6 +3,8 @@ class GuidesController < ApplicationController
   get '/guides' do
     @guides = Guide.all
     @cities = City.all
+    @users = User.all
+    
     erb :"guides/index"
   end 
   
