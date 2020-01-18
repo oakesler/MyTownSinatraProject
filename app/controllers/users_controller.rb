@@ -33,12 +33,53 @@ class UsersController < ApplicationController
       erb :"users/profile"
     end
   end
-  
+  ##############################
   post '/users/:id' do 
     @user = User.find(params[:id])
+    @city = City.new(name: params["city"]["name"])
+    @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
+    
     @params = params
     erb :"users/profile"
   end
+  ######################################
+  
+  post '/figures' do
+    @figure = Figure.create(name: params["figure"]["name"])
+    if params[:figure].keys.include?("title_ids")
+      params["figure"]["title_ids"].each do |item|
+        @title = Title.find(item)
+        @figure.titles << @title
+      end
+    end
+    if params["title"]["name"] != ""
+      @title = Title.create(name: params["title"]["name"])
+      @figure.titles << @title
+    end
+    #if !!params["landmark"]["name"].scan(/\w/)
+    
+    if params["landmark"]["name"] != "" && params["landmark"]["name"] != nil
+      @landmark = Landmark.create(name: params["landmark"]["name"], year_completed: params["landmark"]["year_completed"], figure_id: @figure.id)
+      @landmark.save
+    end
+    if params["figure"]["landmark_ids"].length > 0
+      #binding.pry
+      params["figure"]["landmark_ids"].each do |id|
+        @landmark = Landmark.find(id)
+        #@landmark.update(figure_id: params[:id])
+        @landmark.update(figure_id: @figure.id)
+        @landmark.save
+      end
+    end
+    redirect to "/figures/#{@figure.id}"
+  end
+  
+  
+  
+  
+  
+  
+  
   
   #get '/users' do 
     #erb :"users/profiles"
