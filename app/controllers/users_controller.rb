@@ -119,12 +119,6 @@ class UsersController < ApplicationController
   #end
   
   
-  
-  
-  
-  
-  
-  
   #get '/users' do 
     #erb :"users/profiles"
   #end

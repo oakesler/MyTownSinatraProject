@@ -36,9 +36,9 @@
   
   <br>
   <input type="text" name="location_1[description]" id="new_location_description_1" placeholder="Location Description"></input>
-  
-  <h3>Create or select a location type:</h3>
-  
+  <br>
+  <br>
+
   <input type="text" name="location_1[type]" id="new_location_type_1" placeholder="Location Type:"></input>
    
   <p>[Existing Location Types]</p>
@@ -51,7 +51,7 @@
   <p>-----------------------------------------------------------------------------------------</p>
   
   <h4>Location #2</h4>
-  <br>
+
   <input type="text" name="location_2[name]" id="new_location_name_2" placeholder="Location Name:"></input>
   
   <p>[Existing Location Names]</p>
@@ -61,67 +61,45 @@
   <% end %>
   <br>
   
-  <p>New Location Address/Zipcode</p>
-  <label>Address/Zipcode</label>
   <br>
-  <input type="text" name="location_2[address]" id="new_location_address_2"></input>
+  <input type="text" name="location_2[address]" id="new_location_address_2" placeholder="Address/Zipcode"></input>
+  <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
   
   <br>
-  
-  <p>New Location Description:</p>
-  <label>Description:</label>
+  <input type="text" name="location_2[description]" id="new_location_description_2" placeholder="Location Description:"></input>
   <br>
-  <input type="text" name="location_2[description]" id="new_location_description_2"></input>
-  
-  <h7>Almost done! Create or select a location type:</h7>
-  
-  <label>Location Type:</label>
   <br>
-  <input type="text" name="location_2[type]" id="new_location_type_2"></input>
+  <input type="text" name="location_2[type]" id="new_location_type_2" placeholder="Location Type"></input>
    
-  <h3>Existing Location Types</h3>
+  <p>[Existing Location Types]</p>
   <% @location_types.each do |item| %>
     <input type="checkbox" name="location_2[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
   <br>
   
-  <%#---------------------------------------------------------------------------------------------------%>
+  <p>-----------------------------------------------------------------------------------------</p>
   
-  <h7>Location #3</h7>
+  <h4>Location #3</h4>
   
-  <p>New Location Name</p>
-  <label>Name: </label>
   <br>
-  <input type="text" name="location_3[name]" id="new_location_name_3"></input>
+  <input type="text" name="location_3[name]" id="new_location_name_3" placeholder="Location Name:"></input>
   
-  <h3>Existing Location Names</h3>
+  <p>[Existing Location Names]</p>
   <% @locations.each do |item| %>
     <input type="checkbox" name="location_3[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
   <% end %>
   <br>
+  <input type="text" name="location_3[address]" id="new_location_address_3" placeholder="Location/Address:"></input>
+  <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
   
-  <p>New Location Address/Zipcode</p>
-  <label>Address/Zipcode</label>
   <br>
-  <input type="text" name="location_3[address]" id="new_location_address_3"></input>
+  <input type="text" name="location_3[description]" id="new_location_description_3" placeholder="Location Description:"></input>
+  <br>
+  <br>
+  <input type="text" name="location_3[type]" id="new_location_type_3" placeholder="Location Type"></input>
    
-  <br>
-  
-  <p>New Location Description:</p>
-  <label>Description:</label>
-  <br>
-  <input type="text" name="location_3[description]" id="new_location_description_3"></input>
-  
-  
-  <h7>Almost done! Create or select a location type:</h7>
-  
-  <label>Location Type:</label>
-  <br>
-  <input type="text" name="location_3[type]" id="new_location_type_3"></input>
-   
-  <h3>Existing Location Types</h3>
+  <p>[Existing Location Types]</p>
   <% @location_types.each do |item| %>
     <input type="checkbox" name="location_3[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
