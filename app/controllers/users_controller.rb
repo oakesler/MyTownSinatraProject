@@ -47,7 +47,15 @@ class UsersController < ApplicationController
     @city.save
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
     if params[:location_1].keys.include?("location_name_ids")
+      params["location_1"]["location_name_ids"].each do |item|
+        @location_1 = Location.find(item)
+      end
+    else
+      @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+    end
       
+      
+      else 
       
     @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
     
