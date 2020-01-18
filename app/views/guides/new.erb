@@ -1,79 +1,60 @@
-<h3>Hey, <%=@user.name%>!</h3>
+<h2>Hey, <%=@user.name%>!</h2>
 
-<h2>Create a New Guide</h2>
+<h1>Create a New Guide</h1>
 
-<h5>First, enter a name for your guide...</h5>
+<h3>First, enter a name for your guide...</h3>
 
 <form action="/users/<%=@user.id%>" method="POST">
   <input type="text" name= "guide[name]" id="new_guide_name" placeholder="Guide Name:">
 
-<h5>Second, enter or select your city...</h5>
-
- <p>New City:</p>
+<h3>Second, enter or select your city...</h3>
  
 <form action="/users/<%=@user.id%>" method="POST">
-  <input type="text" name= "city[name]" id="new_city_name" placeholder="Name:">
+  <input type="text" name= "city[name]" id="new_city_name" placeholder="New City:">
   
-  <p>Existing Cities:</p>
+  <p>[Existing Cities:]</p>
   <% @cities.each do |city| %>
   <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
   <% end %>
   <br>
+  <h3>Now start adding locations and descriptions! (minimum three)</h3>
   
-  <%#---------------------------------------------------------------------------------------------------%>
+  <h4>Location #1</h4>
   
-  <h5>Now start adding locations and descriptions! (minimum three)</h5>
+  <input type="text" name="location_1[name]" id="new_location_name_1" placeholder="Location Name:"></input>
   
-  <h7>Location #1</h7>
-  
-  <p>New Location Name</p>
-  <label>Name: </label>
-  <br>
-  <input type="text" name="location_1[name]" id="new_location_name_1"></input>
-  
-  <h3>Existing Location Names</h3>
+  <p>[Existing Location Names]</p>
   <% @locations.each do |item| %>
     <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
   <br>
   
-  <p>New Location Address/Zipcode</p>
-  <label>Address/Zipcode</label>
-  <br>
+  <input type="text" name="location_1[address]" id="new_location_address_1" placeholder="Address/Zipcode"></input>
   <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
-  <input type="text" name="location_1[address]" id="new_location_address_1"></input>
+  <br>
+  
+  <br>
+  <input type="text" name="location_1[description]" id="new_location_description_1" placeholder="Location Description"></input>
+  
+  <h3>Create or select a location type:</h3>
+  
+  <input type="text" name="location_1[type]" id="new_location_type_1" placeholder="Location Type:"></input>
    
-  <br>
-  
-  <p>New Location Description:</p>
-  <label>Description:</label>
-  <br>
-  <input type="text" name="location_1[description]" id="new_location_description_1"></input>
-  
-  <h7>Almost done! Create or select a location type:</h7>
-  
-  <label>Location Type:</label>
-  <br>
-  <input type="text" name="location_1[type]" id="new_location_type_1"></input>
-   
-  <h3>Existing Location Types</h3>
+  <p>[Existing Location Types]</p>
   <% @location_types.each do |item| %>
     <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
   <br>
   
-  <%#---------------------------------------------------------------------------------------------------%>
+  <p>-----------------------------------------------------------------------------------------</p>
   
-  <h7>Location #2</h7>
-  
-  <p>New Location Name</p>
-  <label>Name: </label>
+  <h4>Location #2</h4>
   <br>
-  <input type="text" name="location_2[name]" id="new_location_name_2"></input>
+  <input type="text" name="location_2[name]" id="new_location_name_2" placeholder="Location Name:"></input>
   
-  <h3>Existing Location Names</h3>
+  <p>[Existing Location Names]</p>
   <% @locations.each do |item| %>
     <input type="checkbox" name="location_2[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
