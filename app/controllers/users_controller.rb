@@ -48,21 +48,31 @@ class UsersController < ApplicationController
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
     if params[:location_1].keys.include?("location_name_ids")
       params["location_1"]["location_name_ids"].each do |item|
-        @location_1 = Location.find(item)
+        temp_location = Location.find(item)
+        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
       end
-    else
+    else 
       @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
     end
-      
-      
-      else 
-      
-    @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
-    
-    
-    
-    
-    
+    #-------------------------------------------------------------------#
+    if params[:location_1].keys.include?("location_name_ids")
+      params["location_1"]["location_name_ids"].each do |item|
+        temp_location = Location.find(item)
+        @location_1 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+      end
+    else 
+      @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_2"]["type"])
+    end
+    #-------------------------------------------------------------------#
+    if params[:location_3].keys.include?("location_name_ids")
+      params["location_3"]["location_name_ids"].each do |item|
+        temp_location = Location.find(item)
+        @location_3 = Location.new(name: "#{temp_location.name}", address: "#{temp_location.address}", city_id: temp_location.city_id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+      end
+    else 
+      @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_3"]["type"])
+    end
+  
     
     if params[:city].keys.include?("city_ids")
         
@@ -75,9 +85,11 @@ class UsersController < ApplicationController
     end
     @city = City.new(name: params["city"]["name"])
     @guide = Guide.new(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    @location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
-    @location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_2"]["type"])
-    @location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_3"]["type"])
+    
+    
+    #@location_1 = Location.new(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_1"]["type"])
+    #@location_2 = Location.new(name: params["location_2"]["name"], address: params["location_2"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_2"]["type"])
+    #@location_3 = Location.new(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, type: params["location_3"]["type"])
 
     @params = params
     erb :"users/profile"
