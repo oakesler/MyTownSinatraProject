@@ -12,7 +12,7 @@ class GuidesController < ApplicationController
     #erb :
   #end
     
-  post "/guides/view/:id" do 
+  post "/guides/:id" do 
     @user = User.find(params[:id])
     if params[:city].keys.include?("city_ids")
       params["city"]["city_ids"].each do |item|
@@ -75,13 +75,42 @@ end
     #@cities = City.all
     #erb :"guides/new"
   #end
-    
   
-  post '/guides/:id' do 
-    erb :"users/profile.rb"
-  end
-  
-  get 'guides/:id' do 
-    erb :"users/profile"
+  patch '/guides/:id' do
+    a = {}
+    @user = User.find(params[:id])
+    @guide = Guide.find_by(user_id: params[:id])
+    if @user.name != params["figure"]["name"]
+      a[:name] = params["figure"]["name"]
+      @figure.update(a)
+    end
+    b = {}
+    if params[:figure].keys.include?("title_ids")
+      b[:title_ids] = params["figure"]["title_ids"]
+      @figure.update(b)
+    end
+    if params["figure"]["title"] != ""
+      @figure.titles << Title.new(name: params["figure"]["title"])
+    end
+    c = {}
+    if @landmark.name != params["landmark"]["name"]
+      c[:name] = params["landmark"]["name"]
+      @landmark.update(c)
+    end
+    d = {}
+    d[:figure_id] = params[:id]
+    if params[:figure].keys.include?("landmark_ids")
+      params["figure"]["landmark_ids"].each do |item|
+        x = Landmark.find(item)
+        x.update(d)
+      end
+    end
+    redirect "/figures/#{@figure.id}"
   end
 end
+    
+  
+  #post '/guides/:id' do 
+    #erb :"users/profile.rb"
+  #end
+ 

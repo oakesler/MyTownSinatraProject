@@ -4,7 +4,7 @@
 
 <h3>First, enter a name for your guide...</h3>
 
-<form action="/guides/view/<%=@user.id%>" method="POST">
+<form action="/guides/<%=@user.id%>" method="POST">
   <input type="text" name= "guide[name]" id="new_guide_name" placeholder="Guide Name:">
 
 <h3>Second, enter or select your city...</h3>
