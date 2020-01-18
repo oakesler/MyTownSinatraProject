@@ -1,1 +1,15 @@
-<h3>All Locations(by Type)</h3>
+<h2>All Locations(by Type)</h2>
+
+<%@location_types.each do |type|%>
+<h6><%=type.name%></h6>
+  <%@locations.each do |place|%>
+    <%if place.type == type.id%>
+    <p>place.name</p>
+    <p>place.address</p
+    <%place.users.each do |user|%>
+    <a href="users/<%=user.id%>"><%=user.name%></a>
+    <%end%>
+    <%end%>
+    <%end%>
+    <%end%>
+  

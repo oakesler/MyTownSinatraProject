@@ -1,7 +1,15 @@
-<h3>Edit Your Profile</h3>
+<h1>Edit Your Profile!</h1>
 
-<h5>Current Name : -----------</h5>
-<p>Edit Name: _____________</p>
-
-<h5>Current Bio : -----------</h5>
-<p>Edit Bio: _____________</p>
+<form action="/guides/<%=@user.id%>/edit" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+  </p>
+  <p>
+    <label for="bio">Bio:</label>
+    <input type="text" name="bio" id="bio" />
+  </p>
+  
+  <input type="submit" />
+  
+</form>

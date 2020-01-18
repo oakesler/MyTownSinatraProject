@@ -1,5 +1,6 @@
 <h2>Browse Guides (by City)</h2>
-<%@cities.each do |city|%>
+<br>
+<%@users.each do |city|%>
 <h6><%=city.name%></h6>
 <%@guides.each do |guide|%>
 <%if guide.city == city %>
