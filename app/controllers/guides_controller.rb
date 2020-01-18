@@ -11,7 +11,8 @@ class GuidesController < ApplicationController
     @user = User.find_by(name: params[:user])
     erb :
   
-  get '/guides/new' do
+  post '/guides/:id/new' do
+    @user = User.find(params[:id])
     erb :"guides/new"
   end
   

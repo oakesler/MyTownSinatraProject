@@ -20,7 +20,13 @@ class UsersController < ApplicationController
     erb :"users/index"
   end
   
-  post "/users/:user"
+  post "/users/:id" do 
+    @user = User.find(params[:id])
+    @user.name = params[:name]
+    @user.bio = params[:bio]
+    @user.save
+    erb :"users/view"
+  end
   
   get '/users/:id/' do
     @user = User.find(params[:id])

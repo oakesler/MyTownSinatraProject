@@ -7,6 +7,8 @@
 
 <h3>Guides:</h3>
 
+<%if session[:email] == @user.email%>
+<a href="/guides/:id/new">Create a New Guide</a>
 <%@user.guides each do |guide|%>
 <a href="/guides/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
 <a href="/guides/<%=@guide.id%>/edit">Edit/Delete</a>
