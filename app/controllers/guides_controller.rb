@@ -84,9 +84,14 @@ class GuidesController < ApplicationController
     @location_types = LocationType.all
     erb :"guides/new"
   end
-  #-#-#-#-
- 
   
+  get 'guides/:id/edit' do 
+    @guide = Guide.find(params[:id])
+    @city = City.find(@guide.city_id)
+    @user = User.find(@guide.user_id.)
+    @locations = @guide.locations
+    erb :"guides/edit"
+  end
   #post ':user/guides/new' do
     #@user = User.find(params[:id])
     #@user.name = params[:name]

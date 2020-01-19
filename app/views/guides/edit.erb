@@ -1,22 +1,18 @@
-<h3>Edit Your Guide</h3>
-
-<h5>Current Guide Name : -----------</h5>
-<p>Edit Guide Name: _____________</p>
-
-<h5>Current Guide City: -----------</h5>
-<p>Edit City : _____________</p>
-<p>or select a city from this list: </p>
-<p>box</p>
-<p>box</p>
-<p>box</p>
-
-
-<h5>Current description: -----------</h5>
-<p>Edit description: _____________</p>
-
-<h5>Locations</h5>
-<p>location #1</p> <a href="location/{location.id}/edit">Edit</a> <p>Delete</p>
-<p>location #2</p> <a href="location/{location.id}/edit">Edit</a> <p>Delete</p>
-<p>location #3</p> <a href="location/{location.id}/edit">Edit</a> <p>Delete</p>
-
-<p>Delete Guide</p>
+<h2>Edit Your Guide</h2>
+ <p><%=@guide.name%></p>
+ <p><%=@city.name%></p>
+ 
+  <form action="/guides/<%=@guide.id%>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label>Edit Guide Name:</label>
+    <br>
+    <input type="text" name="guide[name]" id="guide_name" value="<%= @guide.name %>">
+    <br>
+    <label>Edit City or Choose an Existing City:</label>
+    <input type="text" name="user[bio]" id="bio" value="<%=@guide.city_id%>">
+    
+    <input type="submit" value="Edit Profile">
+  </form>
+  
+<a href="/users/view/<%=@user.id%>">Back to Profile</a>
+<a href="/guides">Explore All Guides</a>
