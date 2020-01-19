@@ -7,4 +7,11 @@
 <br>
 <br>
 
-<a href="/cities">View Guides by City</a>
+<p>***********************************</p>  
+<%if !!session[:email]%>
+<%@user = User.find_by(email: session[:email])%>
+<br>
+<%end%>
+<a href="/cities">Explore all Cities</a>
+<a href="/guides">Explore all Guides</a>
+<a href="/location">Explore all Locations</a>
