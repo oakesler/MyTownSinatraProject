@@ -1,18 +1,18 @@
 <h2>All Locations(by Type)</h2>
 
 <%@types.each do |type|%>
-<h6><%=type.name%></h6>
+<h3><%=type.name%></h3>
   <%@locations.each do |place|%>
-    <%if place.type == type.id%>
-    <p>place.name</p>
-    <p>place.address</p
-    <%place.users.each do |user|%>
-    <a href="users/<%=user.id%>"><%=user.name%></a>
-    <%end%>
+  <%if place.location_type_id == type.id%>
+    <h4><%=place.name%></h4>
+    <p><%=place.address%></p>
+    <p><%=User.find(place.user_id).name%> thought: <%=place.description%></p>
     <%end%>
     <%end%>
     <%end%>
     
+    
+<p>***********************************</p>  
 <%if !!session[:email]%>
 <%@user = User.find_by(email: session[:email])%>
 
