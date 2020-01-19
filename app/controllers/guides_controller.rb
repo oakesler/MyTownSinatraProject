@@ -90,6 +90,7 @@ class GuidesController < ApplicationController
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
     @locations = @guide.locations
+    @cities = City.all
     erb :"guides/edit"
   end
   #post ':user/guides/new' do

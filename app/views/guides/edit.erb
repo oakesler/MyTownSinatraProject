@@ -1,21 +1,25 @@
 <h2>Edit Your Guide</h2>
+<label>Current Guide Name:</label>
  <p><%=@guide.name%></p>
+ <label>Current Guide City:</label>
  <p><%=@city.name%></p>
  
   <form action="/guides/<%=@guide.id%>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label>Edit Guide Name:</label>
     <br>
-    <input type="text" name="guide[name]" id="guide_name" value="<%= @guide.name %>">
+    <input type="text" name="guide[name]" id="guide_name" value="<%=@guide.name %>">
     <br>
-    <label>Edit City or Choose an Existing City:</label>
-    <input type="text" name="user[bio]" id="bio" value="<%=@guide.city_id%>">
+    <label>Edit City:</label>
     <br>
+    <input type="text" name="user[bio]" id="bio" value="<%=@city.name%>">
+    <br>
+    <br>
+    <label>...or Choose an Existing City:</label>
     
-     <h3>Existing Cities</h3>
-      <% City.all.each do |item| %>
-        <input type="checkbox" name="city[city_ids][]" id="title_<%=item.id%>" value="<%=item.id%>"><%='checked' if @guide.city_id == item.id%></input><br>
-      <% end %>
+    <%@cities.all.each do |item| %>
+      <input type="checkbox" name="guide[city_id][]" id="city_<%=item.id%>" value="<%=item.name%>"> <%='checked' if @guide.city_id == item.id%></input><br>
+      <%end%>
       
       <%@locations.each do |item|%>
       <p><%=item.name%></p>
