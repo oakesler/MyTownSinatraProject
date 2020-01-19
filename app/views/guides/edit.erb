@@ -16,27 +16,14 @@
     <br>
     <br>
     <label>...or Choose an Existing City:</label>
+    <br>
     
-    <%@cities.all.each do |item| %>
-      <input type="checkbox" name="guide[city_id][]" id="city_<%=item.id%>" value="<%=item.name%>"> <%='checked' if @guide.city_id == item.id%></input><br>
-      <%end%>
+    <%@cities.each do |item| %>
+      <input type="checkbox" name="guide[city_ids][]" id="city_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
+    <%end%>
       
-      <%@locations.each do |item|%>
+    <%@locations.each do |item|%>
       <p><%=item.name%></p>
-      <input type="text" name="location[name]" id="location_name" value="<%=@location.name%>">
-      <br>
-      <p><%=item.address%></p>
-      <input type="text" name="location[address]" id="location_address" value="<%=@location.address%>">
-      <br>
-      <p><%=item.description%></p>
-      <input type="text" name="location[description]" id="location_description" value="<%=@location.description%>">
-      <br>
-      <p><%=Location.find(location_type_id).name%></p>
-      <input type="text" name="location[type]" id="location_type" value="<%=@location.location_type_id%>">
-      <h3>Existing Location Types</h3>
-      <% @location_types.each do |item| %>
-        <input type="checkbox" name="location[location_type_ids][]" id="type_<%=item.id%>" value="<%=item.name%>"><%='checked' if @location.location_type_id.include?(item)%></input><br>
-      <%end%>
     <%end%>
       
     <input type="submit" value="Edit Guide">

@@ -78,6 +78,7 @@ class GuidesController < ApplicationController
   end
   
   get '/guides/:id/new' do
+    binding.pry
     @user = User.find(params[:id])
     @cities = City.all
     @locations = Location.all
