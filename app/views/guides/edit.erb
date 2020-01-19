@@ -10,8 +10,31 @@
     <br>
     <label>Edit City or Choose an Existing City:</label>
     <input type="text" name="user[bio]" id="bio" value="<%=@guide.city_id%>">
+    <br>
     
-    <input type="submit" value="Edit Profile">
+     <h3>Existing Cities</h3>
+      <% City.all.each do |item| %>
+        <input type="checkbox" name="city[city_ids][]" id="title_<%=item.id%>" value="<%=item.id%>"><%='checked' if @guide.city_id.include?(item)%></input><br>
+      <% end %>
+      
+      <%@locations.each do |item|%>
+      <p><%=item.name%></p>
+      <input type="text" name="location[name]" id="location_name" value="<%=@location.name%>">
+      <br>
+      <p><%=item.address%></p>
+      <input type="text" name="location[address]" id="location_address" value="<%=@location.address%>">
+      <br>
+      <p><%=item.description%></p>
+      <input type="text" name="location[description]" id="location_description" value="<%=@location.description%>">
+      <br>
+      <p><%=Location.find(location_type_id).name%></p>
+      <input type="text" name="location[type]" id="location_type" value="<%=@location.location_type_id%>">
+      <h3>Existing Location Types</h3>
+      <% @location_types.each do |item| %>
+        <input type="checkbox" name="location[location_type_ids][]" id="type_<%=item.id%>" value="<%=item.id%>"><%='checked' if @location.location_type_id.include?(item)%></input><br>
+      <% end %>
+      
+    <input type="submit" value="Edit Guide">
   </form>
   
 <a href="/users/view/<%=@user.id%>">Back to Profile</a>
