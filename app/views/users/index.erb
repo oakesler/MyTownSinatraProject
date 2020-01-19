@@ -1,27 +1,10 @@
 <h3>View all MyTown Users</h3>
 
-<p>link to profile</p>
-
-<p>link to profile</p>
-
-<p>link to profile</p>
-
-<p>link to profile</p>
-
-<h2>All the Users</h2>
-
-
-User.all each do |person|
-<a href="user/{user.id}">{person.name}</a>
-<a href="/profiles/{@user.id}">Seashell's Profile</a>
-
-<h3>Hamid</h3>
-<p>Cities:</p>
-
-<h3>Gerald</h3>
-<p>Cities:</p>
-
-<h3>OJ</h3>
-<p>Cities:</p>
+<%@users.each do |user|%>
+<a href="/users/<%=user.id%>"><%=user.name%></a>
+<%end%>
+<br>
+<br>
+<br>
 
 <a href="/cities">View Guides by City</a>

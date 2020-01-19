@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   ##########THIS IS ALL SIGN UP ###################
   
   get '/users' do 
+    @users = User.all
     erb :"users/index"
   end
   
