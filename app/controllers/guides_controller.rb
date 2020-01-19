@@ -22,7 +22,7 @@ class GuidesController < ApplicationController
     if params[:city].keys.include?("city_ids")
       @city = City.find(params["city"]["city_ids"])
     else
-      @city = City.create(name: params["city"]["name"])
+      @city = City.create(name: params["city"]["name"]).capitalize
     end
     @guide = Guide.create(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
     #LOCATION 1

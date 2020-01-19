@@ -1,10 +1,11 @@
 <h2>Browse Guides by City</h2>
 <br>
-<%@cities.each do |city|%>
-<h4><%=city%></h4>
-<br>
+
+
+
+<%@cities.sort_by(&:name).each do |city|%>
+<h4><%=city.name%></h4>
 <%city.guides.each do |guide|%>
-<br>
 <a href="guides/<%=guide.id%>"><%=guide.name%></a>
 <br>
 <%end%>
