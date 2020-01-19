@@ -1,15 +1,18 @@
 <h1><%=@guide.name%></h1>
 <br>
 <h3><%=@user.name%>'s Guide to <%=@city.name%></h2>
-<%=@city.guides%>
-<%=@guide.locations%>
-<%#<%@guide.locations each do |place|%>
-<%#<p><%=place.name%></p>
-<%#<p>Category: <%=LocationType.find(place.location_type_id)%></p>
-<%#<p><%=place.address%></p>
-<%#<p><%=place.description%></p>
-<%#<br>
-<%#<%end%>
+
+<%@guide.locations.each do |place|%>
+<h5>Location Name</h5>
+<p><%=place.name%></p>
+<h5>Category</h5>
+<%type_id = place.location_type_id%>
+<p><%=@types.find(type_id)%></p>
+<h5>Address</h5>
+<p><%=place.address%></p>
+<h5>Description</h5>
+<p><%=place.description%></p>
+<%end%>
 
 <%if session[:email] == @user[:email]%>
 <a href="/guides/<%=@user.id%>/edit">Edit this Guide</a>

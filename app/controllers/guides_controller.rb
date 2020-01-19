@@ -67,6 +67,7 @@ class GuidesController < ApplicationController
     else 
       @location_3 = Location.create(name: params["location_3"]["name"], address: params["location_3"]["address"], city_id: @city.id, user_id: params[:id], guide_id: @guide.id, description: params["location_3"]["description"], location_type_id: @location_type_three.id)
     end
+    @types = LocationType.all
     erb :"guides/view"
   end
   
