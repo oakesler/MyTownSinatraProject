@@ -14,7 +14,7 @@
     
      <h3>Existing Cities</h3>
       <% City.all.each do |item| %>
-        <input type="checkbox" name="city[city_ids][]" id="title_<%=item.id%>" value="<%=item.id%>"><%='checked' if @guide.city_id.include?(item)%></input><br>
+        <input type="checkbox" name="city[city_ids][]" id="title_<%=item.id%>" value="<%=item.id%>"><%='checked' if @guide.city_id == item.id%></input><br>
       <% end %>
       
       <%@locations.each do |item|%>
@@ -32,7 +32,8 @@
       <h3>Existing Location Types</h3>
       <% @location_types.each do |item| %>
         <input type="checkbox" name="location[location_type_ids][]" id="type_<%=item.id%>" value="<%=item.id%>"><%='checked' if @location.location_type_id.include?(item)%></input><br>
-      <% end %>
+      <%end%>
+    <%end%>
       
     <input type="submit" value="Edit Guide">
   </form>

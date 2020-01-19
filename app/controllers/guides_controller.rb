@@ -85,10 +85,10 @@ class GuidesController < ApplicationController
     erb :"guides/new"
   end
   
-  get 'guides/:id/edit' do 
+  get '/guides/:id/edit' do 
     @guide = Guide.find(params[:id])
     @city = City.find(@guide.city_id)
-    @user = User.find(@guide.user_id.)
+    @user = User.find(@guide.user_id)
     @locations = @guide.locations
     erb :"guides/edit"
   end
@@ -100,6 +100,15 @@ class GuidesController < ApplicationController
     #@cities = City.all
     #erb :"guides/new"
   #end
+  
+    #patch '/users/:id' do
+    #@user = User.find(params[:id])
+    #@user.update(params["user"])
+    #@user.save
+    #erb :"/users/view"
+  #end
+
+  
   
   patch '/guides/:id' do
     a = {}
@@ -135,9 +144,4 @@ class GuidesController < ApplicationController
     redirect "/figures/#{@figure.id}"
   end
 end
-    
-  
-  #post '/guides/:id' do 
-    #erb :"users/profile.rb"
-  #end
  
