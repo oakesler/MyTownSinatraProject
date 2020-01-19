@@ -1,18 +1,17 @@
-<h1>Edit Your Profile!</h1>
-
-<form action="/guides/<%=@user.id%>/edit" method="POST">
-  <p>
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" />
-  </p>
-  <p>
-    <label for="bio">Bio:</label>
-    <input type="text" name="bio" id="bio" />
-  </p>
+<h2>Edit Your Profile</h2>
+ <p><%=@user.name%></p>
+ <p><%=@user.bio%></p>
+ 
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label>Edit Your Name:</label>
+    <br>
+    <input type="text" name="user[name]" id="name" value="<%= @user.name %>">
+    <br>
+    <label>Edit Your Bio:</label>
+    <input type="text" name="user[bio]" id="bio" value="<%= @user.bio%>">
+    <input type="submit" value="Edit Profile">
+  </form>
   
-  <input type="submit" />
-  
-</form>
-
 <a href="/users/view/<%=@user.id%>">Back to Profile</a>
 <a href="/guides">Explore All Guides</a>
