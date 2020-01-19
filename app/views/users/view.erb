@@ -2,12 +2,11 @@
   <h2>Hey <%=@user.name%>, Welcome back!</h2>
   <br>
   <h3>Your Profile:</h3>
-  <h5>Name: <%=@user.name%></h5>
-  <h5>Bio: <%=@user.bio%></h5>
-  <a href="./edit">Edit Profile</a>
+  <h3>Name: <%=@user.name%></h3>
+  <h3>Bio: <%=@user.bio%></h3>
   <br>
+  <h4><a href="./edit">Edit Profile</a> / <a href="/guides/<%=@user.id%>/new">Create a New Guide</a> </h4>
   <br>
-  <a href="/guides/<%=@user.id%>/new">Create a New Guide</a>
   <br>
   <br>
   <h3>Your Guides:</h3>
@@ -16,7 +15,7 @@
   <%else%>
   <%@user.guides.each do |guide|%>
   
-  <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a>
+  <h4> <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a> </h4>
   
   <a href="/guides/<%=guide.id%>/edit">Edit/Delete</a>
   <br>
