@@ -4,6 +4,7 @@ class GuidesController < ApplicationController
     @guides = Guide.all
     @cities = City.all
     @users = User.all
+    @types = LocationType.all
     erb :"guides/index"
   end 
   
@@ -11,6 +12,7 @@ class GuidesController < ApplicationController
     @guide = Guide.find(params[:id])
     @user = User.find(@guide.user_id)
     @city = City.find(@guide.city_id)
+    @types = LocationType.all
     erb :"guides/view"
   end
     

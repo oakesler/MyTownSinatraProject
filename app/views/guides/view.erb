@@ -6,8 +6,7 @@
 <h5>Location Name</h5>
 <p><%=place.name%></p>
 <h5>Category</h5>
-<%type_id = place.location_type_id%>
-<p><%=@types.find(type_id)%></p>
+<p><%=LocationType.find(place.location_type_id)%></p>
 <h5>Address</h5>
 <p><%=place.address%></p>
 <h5>Description</h5>
