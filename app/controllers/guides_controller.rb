@@ -7,14 +7,7 @@ class GuidesController < ApplicationController
     erb :"guides/index"
   end 
   
-  #these next two might be in the wrong order...
-  #get '/:user/guides' do 
-    #@user = User.find_by(name: params[:user])
-    #erb :
-  #end
-  
   get "/guides/:id" do 
-    #binding.pry
     @guide = Guide.find(params[:id])
     @user = User.find(@guide.user_id)
     @city = City.find(@guide.city_id)
@@ -22,6 +15,7 @@ class GuidesController < ApplicationController
   end
     
   post "/guides/:id" do 
+    binding.pry
     @user = User.find(params[:id])
     if params[:city].keys.include?("city_ids")
       @city = City.find(params["city"]["city_ids"])
@@ -29,12 +23,11 @@ class GuidesController < ApplicationController
       @city = City.create(name: params["city"]["name"])
     end
     @guide = Guide.create(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    #-------------------------------------------------------------------#
     #LOCATION 1
     if params["location_1"].include?("location_type_ids")
       @location_type_1 = LocationType.find(params[:location_type_ids][0])
     else 
-      @location_type_1 = LocationType.create(name: params["location_1"]["location_type"])
+      @location_type_1 = LocationType.create(name: params["location_1"]["type"])
     end
     if params[:location_1].keys.include?("location_name_ids") 
       params["location_1"]["location_name_ids"].each do |item|
@@ -49,7 +42,7 @@ class GuidesController < ApplicationController
     if params["location_2"].include?("location_type_ids")
       @location_type_two = LocationType.find(params[:location_type_ids][0])
     else 
-      @location_type_two = LocationType.create(name: params["location_2"]["location_type"])
+      @location_type_two = LocationType.create(name: params["location_2"]["type"])
     end
     if params[:location_2].keys.include?("location_name_ids")
       params["location_2"]["location_name_ids"].each do |item|
@@ -64,7 +57,7 @@ class GuidesController < ApplicationController
     if params["location_3"].include?("location_type_ids")
       @location_type_three = LocationType.find(params["location_3"]["location_type_ids"][0])
     else 
-      @location_type_three = LocationType.create(name: params["location_3"]["location_type"])
+      @location_type_three = LocationType.create(name: params["location_3"]["type"])
     end
     if params[:location_3].keys.include?("location_name_ids")
       params["location_3"]["location_name_ids"].each do |item|
