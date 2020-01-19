@@ -12,7 +12,7 @@
 <%#<%end%>
 
 <%if session[:email] == @user[:email]%>
-<a href="/guides/edit/:id">Edit this Guide</a>
-<a href="/users/view/:id">Return to Profile</a>
+<a href="/guides/edit/<%=@user.id%>">Edit this Guide</a>
+<a href="/users/<%=@user.id%>">Return to Profile</a>
 <a href="/guides">Explore all Guides</a>
 <%end%>
