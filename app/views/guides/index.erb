@@ -1,18 +1,18 @@
-<h2>Browse Guides (by City)</h2>
+<h2>Browse Guides by City</h2>
 <br>
-<%@users.each do |city|%>
-<h6><%=city.name%></h6>
-<%@guides.each do |guide|%>
-<%if guide.city == city %>
+<%@cities.each do |city|%>
+<h4><%=city%></h4>
+<br>
+<%city.guides.each do |guide|%>
+<br>
+<a href="guides/<%=guide.id%>"><%=guide.name%></a>
+<br>
+<%end%>
+<%end%>
 
-<a href="/guides/<%=guide.id%>> <%=guide.user%>'s Guide <%=guide.name%></a>
-<%end%>
-<%end%>
-<%end%>
 
 <%if !!session[:email]%>
 <%@user = User.find_by(email: session[:email])%>
-
 <a href="/users/<%=@user.id%>/">Return to Profile</a>
 <a href="/locations">Explore all Locations</a>
 <%else%>
