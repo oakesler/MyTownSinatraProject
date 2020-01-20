@@ -20,4 +20,11 @@ class LocationsController < ApplicationController
     
     erb :"locations/edit"
   end
+  
+   patch '/users/:id' do
+    @user = User.find(params[:id])
+    @user.update(params["user"])
+    @user.save
+    erb :"/users/view"
+  end
 end

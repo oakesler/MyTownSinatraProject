@@ -1,9 +1,5 @@
 <h2>Edit a Single Location</h2>
 
-<form action="/guides/<%=@guide.id%>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="patch">
-    <label>Edit Guide Name:</label>
-
 <form action="/location/<%=@location.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <h4><%=@location.name%></h4>
@@ -13,20 +9,16 @@
   <p><%=@location.description%></p>
   <input type="text" name="location[description]" id="location_name" value="<%=@location.description %>">
   <p>Enter a new category</p>
-  <%@location_types.each do |type|%>
-    <%if type.id == item.location_type_id%>
+  <%@types.each do |type|%>
+    <%if type.id == @location.location_type_id%>
       <p><%=type.name%></p>
       <input type="text" name="location[location_type_id]" id="location_name" value="<%=type.name%>">
-      <%end%>
-      <%end%>
+    <%end%>
+  <%end%>
   <p>or select one:</p>
-  <%@location_types.each do |item|%>
+  <%@types.each do |item|%>
   <input type="checkbox" name="location[location_types][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
-    <%end%>
-      
-  
-  
-    <%end%>
+  <%end%>
       
     <input type="submit" value="Edit This Location">
   </form>
