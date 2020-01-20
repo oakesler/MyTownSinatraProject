@@ -115,9 +115,15 @@ class GuidesController < ApplicationController
   
   post '/guides/:id/delete' do 
     @guide = Guide.find(params[:id])
+    @user = User.find(@guide.user_id)
     @guide.locations.each do |item|
+      item.location_type_id.destroy
       item.destroy
     end
+    @city = City.find(@guide.city_id)
+    @city.destroy
     @guide.destroy
+    
+    erb :"users/#{@user.id}/view"
   end
 end
