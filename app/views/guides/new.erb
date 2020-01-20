@@ -33,13 +33,11 @@
     <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
       <%location_array << item.name%>
       <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+      <br>
     <%end%>
   <% end %>
   <br>
-  
-  
-  
-  
+  <br>
   
   <input type="text" name="location_1[address]" id="new_location_address_1" placeholder="Address/Zipcode"></input>
   <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
@@ -55,11 +53,11 @@
   <p>[Existing Location Types]</p>
   <%type_array = []%>
   <% @location_types.each do |item| %>
-    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
+    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
       <%type_array << item.name%>
       <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+      <br>
       <%end%>
-    <br>
   <% end %>
   <br>
 
