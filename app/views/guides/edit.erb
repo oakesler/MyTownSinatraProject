@@ -1,3 +1,4 @@
+<%if @user.email == session[:email]%>
 <h2>Edit Your Guide</h2>
 <label>Current Guide Name:</label>
  <p><%=@guide.name%></p>
@@ -21,6 +22,8 @@
     <%@cities.each do |item| %>
       <input type="checkbox" name="guide[city_ids][]" id="city_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
     <%end%>
+    
+    <a href="/locations/<%=@guide.id%>/new">Add new locations to this guide</a>
       
       <h4>Guide Locations:</h4>
     <%@locations.each do |item|%>
@@ -47,4 +50,10 @@
     
   
 <a href="/users/<%=@user.id%>/">Back to Profile</a>
-<a href="/guides">Explore All Guides</a>
+<a href="/cities">Explore All Cities</a>
+<a href="/locations">Explore All Locations</a>
+<%end%>
+<%if @user.email != session[:email]%>
+Sorry, you need to log in to view this page!
+<a href = "/">Log in/Sign up</a>
+<%end%>

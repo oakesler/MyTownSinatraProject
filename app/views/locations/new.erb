@@ -1,11 +1,11 @@
-<h2>Add a New Location to Your <%=@guide.city.name%> Guide, <%=@guide.name%></h2>
+<h2>Hey, <%=@user.name%>!</h2>
 
-<h4>New Location </h4>
+
+<h1>Add a New Location to Your <%=City.find(@guide.city_id).name%> Guide, <%=@guide.name%></h2>
+
+<h4>Location #1</h4>
   
-  
-  <form action="/locations/view/<%=@guide.id%>" method="POST">
-  <br>
-  
+  <form action="/locations/<%=@guide.id%>" method="POST">
   <input type="text" name="location_1[name]" id="new_location_name_1" placeholder="Location Name:"></input>
   
   <p>[Existing Location Names]</p>
@@ -27,15 +27,12 @@
   <input type="text" name="location_1[type]" id="new_location_type_1" placeholder="Location Type:"></input>
    
   <p>[Existing Location Types]</p>
-  <% @location_types.each do |item| %>
+  <% @types.each do |item| %>
     <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
     <br>
   <% end %>
   <br>
-  
-    
-  <input type="submit" value="Add New Location">
-
+  <input type="submit" value="Create New Guide">
   </form>
   
   <a href="/users/view/<%=@user.id%>">Back to Profile</a>

@@ -7,6 +7,22 @@ class LocationsController < ApplicationController
     erb :"locations/index"
   end
   
+  get '/locations/:id/new' do
+    @guide = Guide.find(params[:id])
+    @user = User.find(@guide.user_id)
+    @types = LocationType.all
+    @locations = Location.all
+    erb :"locations/new"
+  end
+  
+  post "/locations/:id" do
+    binding.pry
+    @guide = Guide.find(params[:id])
+    #@location = Location.create(name: , address: , city_id: , user_id: , guide_id: , description: , location_type_id: )
+    erb :"guides/view"
+  end
+  
+  
   post '/locations/view/:id' do 
     @guide = Guide.find(params[:id])
     @user = User.find(@guide.user_id)
