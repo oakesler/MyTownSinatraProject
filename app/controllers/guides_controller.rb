@@ -95,17 +95,9 @@ class GuidesController < ApplicationController
     @cities = City.all
     erb :"guides/edit"
   end
-  #post ':user/guides/new' do
-    #@user = User.find(params[:id])
-    #@user.name = params[:name]
-    #@user.bio = params[:bio]
-    #@user.save
-    #@cities = City.all
-    #erb :"guides/new"
-  #end
   
   patch '/guides/:id' do
-    hash = {:name => , :city_id => }
+    hash = {:name => " ", :city_id => " "}
     @guide = Guide.find(params[:id])
     if !Location.find_by(name: params[:guide][:city])
       @city = City.create_by(name: params["guide"]["city"])
@@ -113,7 +105,7 @@ class GuidesController < ApplicationController
     else 
       hash[:city_id] = City.find_by(name: params[:guide][:city]).id
     end
-    @guide.update(params[:guide])
+    @guide.update(hash)
     @guide.save
     erb :"/users/view"
   end
