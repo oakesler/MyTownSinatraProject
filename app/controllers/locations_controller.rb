@@ -20,8 +20,20 @@ class LocationsController < ApplicationController
     @guide = Guide.find(params[:id])
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
-    if params 
-    @location = Location.create(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: "#{@city.id}" , user_id: "#{@user.id}" , guide_id: "#{@guide.id}", description: params["location_1"]["description"], location_type_id: "#{@type}")
+    if !!params["location_1"]["type"]
+      @type = LocationType.create(name: params["location_1"]["type"])
+    end
+    if !!params["location_1"]["location_type_ids"][0]
+      @type = LocationType.find(params["location_1"]["location_type_ids"][0])
+    end
+    if !!params["location_1"]["location_name_ids"][0]
+      @name = Location.find(params["location_1"]["location_name_ids"][0]).name
+    end
+    if !!params["location_1"]["name"]
+      @name = params["location_1"]["name"]
+    end
+
+    @location = Location.create(name: @name, address: params["location_1"]["address"], city_id: "#{@city.id}" , user_id: "#{@user.id}" , guide_id: "#{@guide.id}", description: params["location_1"]["description"], location_type_id: "#{@type}")
     erb :"guides/view"
   end
   
