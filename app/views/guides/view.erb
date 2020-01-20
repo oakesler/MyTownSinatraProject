@@ -1,12 +1,12 @@
+<h3><%=@user.name%>'s Guide to <%=@city.name%>:</h2>
 <h1><%=@guide.name%></h1>
 <br>
-<h3><%=@user.name%>'s Guide to <%=@city.name%></h2>
 
 <%@guide.locations.each do |place|%>
 <h5>Location Name</h5>
 <p><%=place.name%></p>
 <h5>Category</h5>
-<p><%=LocationType.find(place.location_type_id)%></p>
+<p><%=LocationType.find(place.location_type_id).name%></p>
 <h5>Address</h5>
 <p><%=place.address%></p>
 <h5>Description</h5>
