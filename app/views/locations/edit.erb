@@ -1,6 +1,6 @@
 <h2>Edit a Single Location</h2>
 
-<form action="/location/<%=@location.id%>" method="POST">
+<form action="/locations/<%=@location.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <h4><%=@location.name%></h4>
   <input type="text" name="location[name]" id="location_name" value="<%=@location.name %>">

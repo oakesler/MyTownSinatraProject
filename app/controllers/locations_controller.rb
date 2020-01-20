@@ -22,11 +22,11 @@ class LocationsController < ApplicationController
   end
   
    patch '/locations/:id' do
-    binding.pry
     @location = Location.find(params[:id])
-    @user.update(params["user"])
-    @user.save
-    @guide = Guide.find()
-    erb :"/guide/view"
+    @guide = Guide.find(@location.guide_id)
+    @user = User.find(@guide.user_id)
+    @location.update(params["location"])
+    @location.save
+    erb :"/guides/view"
   end
 end
