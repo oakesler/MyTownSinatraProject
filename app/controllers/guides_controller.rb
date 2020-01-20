@@ -17,18 +17,19 @@ class GuidesController < ApplicationController
   end
     
   post "/guides/:id" do 
-    #binding.pry
     @user = User.find(params[:id])
-    if params[:city].keys.include?("city_ids")
-      @city = City.find(params["city"]["city_ids"])
+    if !!params[:city].keys.include?("city_ids")
+      @city = City.find(params["city"]["city_ids"][0])
       elsif !!City.find_by(name: params["city"]["name"])
       @city = City.find_by(name: params["city"]["name"])
     else
       @city = City.create(name: params["city"]["name"])
     end
-    #if !Guide.find_by(name: params["guide"]["name"], user_id: @user.id)
+    if !!Guide.find_by(name: params["guide"]["name"], user_id: @user.id)
+      @guide = Guide.create(name: "#{params["guide"]["name"]}_(Note: You already have a guide with this name!)", user_id: params[:id], city_id: @city.id)
+    else
       @guide = Guide.create(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
-    #end
+    end
     #LOCATION 1#
     if params["location_1"].include?("location_type_ids")
       @location_type_1 = LocationType.find(params[:location_type_ids][0])
