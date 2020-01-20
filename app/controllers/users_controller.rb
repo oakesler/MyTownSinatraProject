@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     erb :'users/new.html'
   end
   
-  post '/users' do 
+  post '/users' do
     @user = User.new 
     @user.email = params[:email]
     @user.password = params[:password]
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   end
   
   get '/users/:id/' do
+    binding.pry
     @user = User.find(params[:id])
     if !@user.name
       erb :"users/new"

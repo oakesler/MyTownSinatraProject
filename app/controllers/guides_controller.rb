@@ -16,7 +16,7 @@ class GuidesController < ApplicationController
     erb :"guides/view"
   end
     
-  post "/guides/:id" do 
+  post "/guides/:id" do
     @user = User.find(params[:id])
     if !!params[:city].keys.include?("city_ids")
       @city = City.find(params["city"]["city_ids"][0])
