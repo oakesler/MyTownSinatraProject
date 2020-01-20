@@ -97,16 +97,19 @@ class GuidesController < ApplicationController
   end
   
   patch '/guides/:id' do
+    binding.pry
     hash = {:name => " ", :city_id => " "}
     @guide = Guide.find(params[:id])
     if !Location.find_by(name: params[:guide][:city])
-      @city = City.create_by(name: params["guide"]["city"])
+      @city = City.create(name: params["guide"]["city"])
       hash[:city_id] = @city.id
     else 
       hash[:city_id] = City.find_by(name: params[:guide][:city]).id
     end
+    hash[:name] = params[:guide][:name]
     @guide.update(hash)
     @guide.save
+    @user = User.find(@guide.user_id)
     erb :"/users/view"
   end
 end
