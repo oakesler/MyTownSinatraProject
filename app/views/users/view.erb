@@ -44,3 +44,8 @@
   <a href="/cities">Explore Cities</a>
   <a href="/locations">Explore Locations</a>
   <a href="/users">Explore Users</a>
+  <br>
+  
+  <%if session[:email] == @user.email %>
+  <a href="/logout">Log Out</a>
+  <%end%>
