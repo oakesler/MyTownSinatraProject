@@ -31,7 +31,6 @@ class GuidesController < ApplicationController
       @guide = Guide.create(name: params["guide"]["name"], user_id: params[:id], city_id: @city.id)
     end
     #LOCATION 1#
-    #binding.pry
     if params["location_1"].include?("location_type_ids")
       @location_type_1 = LocationType.find(params[:location_1][:location_type_ids][0])
     else 
@@ -47,8 +46,9 @@ class GuidesController < ApplicationController
     end
     #-------------------------------------------------------------------#
     #LOCATION 2
+    binding.pry
     if params["location_2"].include?("location_type_ids")
-      @location_type_two = LocationType.find(params[:location_type_ids][0])
+      @location_type_two = LocationType.find(params[:location_2][:location_type_ids][0])
     else 
       @location_type_two = LocationType.create(name: params["location_2"]["type"])
     end
