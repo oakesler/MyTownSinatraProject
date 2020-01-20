@@ -2,17 +2,17 @@
 
 <%@types.each do |type|%>
 <h3><%=type.name%></h3>
-  <%@locations.each do |place|%>
-  <%if place.location_type_id == type.id%>
-    <h4><%=place.name%></h4>
-    <p><%=place.address%></p>
-    <p><%=User.find(place.user_id).name%> thought: <%=place.description%></p>
-    <%end%>
-    <%end%>
-    <%end%>
-    
-<br> 
-<p>***********************************</p>  
+<%@locations.each do |place|%>
+<%if place.location_type_id == type.id%>
+<h4><%=place.name%></h4>
+<p><%=place.address%></p>
+<p><%=User.find(place.user_id).name%> thought: <%=place.description%></p>
+<%end%>
+<%end%>
+<%end%>
+ 
+<br>
+<p>***********************************</p> 
 <%if !!session[:email]%>
 <%@user = User.find_by(email: session[:email])%>
 <a href="/users/<%=@user.id%>/">Return to Profile</a>
