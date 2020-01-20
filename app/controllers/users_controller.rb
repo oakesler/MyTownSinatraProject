@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.name = params[:name]
     @user.bio = params[:bio]
-    @user.save
     erb :"users/view"
   end
   
