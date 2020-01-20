@@ -29,7 +29,11 @@
       <input type="text" name="location[address]" id="location_name" value="<%=item.address %>">
       <p><%=item.description%></p>
       <input type="text" name="location[description]" id="location_name" value="<%=item.description %>">
-      <p><%=item.location_type_id%></p>
+      <%@location_types.each do |type|%>
+      <%if type.id == item.location_type_id%>
+      <p><%=type.name%></p>
+      <%end%>
+      <%end%>
       <input type="text" name="location[location_type_id]" id="location_name" value="<%=item.location_type_id%>">
     <%end%>
       

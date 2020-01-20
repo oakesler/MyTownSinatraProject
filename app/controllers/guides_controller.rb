@@ -91,6 +91,7 @@ class GuidesController < ApplicationController
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
     @locations = @guide.locations
+    @location_types = LocationType.all
     @cities = City.all
     erb :"guides/edit"
   end
