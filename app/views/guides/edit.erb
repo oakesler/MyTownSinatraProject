@@ -24,13 +24,13 @@
       
     <%@locations.each do |item|%>
       <p><%=item.name%></p>
-      <input type="text" name="location[names]" id="location_name" value="<%=@location.name %>">
+      <input type="text" name="location[names]" id="location_name" value="<%=item.name %>">
       <p><%=item.address%></p>
-      <input type="text" name="location[address]" id="location_name" value="<%=@location.address %>">
+      <input type="text" name="location[address]" id="location_name" value="<%=item.address %>">
       <p><%=item.description%></p>
-      <input type="text" name="location[description]" id="location_name" value="<%=@location.description %>">
+      <input type="text" name="location[description]" id="location_name" value="<%=item.description %>">
       <p><%=item.location_type_id%></p>
-      <input type="text" name="location[location_type_id]" id="location_name" value="<%=@location.location_type_id%>">
+      <input type="text" name="location[location_type_id]" id="location_name" value="<%=item.location_type_id%>">
     <%end%>
       
     <input type="submit" value="Edit Guide">

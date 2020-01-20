@@ -46,7 +46,6 @@ class GuidesController < ApplicationController
     end
     #-------------------------------------------------------------------#
     #LOCATION 2
-    binding.pry
     if params["location_2"].include?("location_type_ids")
       @location_type_two = LocationType.find(params[:location_2][:location_type_ids][0])
     else 
