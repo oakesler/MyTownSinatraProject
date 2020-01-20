@@ -1,52 +1,41 @@
-<%if session[:email] == @user.email%>
+<%if session[:email] == @user.email%> 
   <h1>Welcome to MyTown, <%=@user.name%>!</h1>
   <br>
   <h2>Your Profile:</h2>
-  <%if !@user.name %>
-  <p>Click "Edit Profile" to set up your profile...</p>
-  <%else%>
-  <h3>Name: <%=@user.name%></h3>
-  <h3>Bio: <%=@user.bio%></h3.
-  <br>
-  <%end%>
-  <h4><a href="./edit">Edit Profile</a> / <a href="/guides/<%=@user.id%>/new">Create a New Guide</a> </h4>
-  <br>
-  <br>
-  <br>
-  <h2>Your Guides:</h2>
-  <%if @user.guides.count == 0%>
-  <h6>Click "Create a New Guide" to start!"</h6>
-  <%else%>
-  <%@user.guides.each do |guide|%>
-  
-  <h4> <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a> </h4>
-  
-  <a href="/guides/<%=guide.id%>/edit">Edit Guide</a>
-  <form action="/guides/<%=guide.id%>/delete" method="POST">
-    <input type="submit" value="Delete Guide">
-  </form>
-  <br>
-  <%end%>
-  <%end%>
 <%else%>
-  <h2><%=@user.name%>'s Profile</h2>
+  <h1><%=@user.name%>'s Profile:</h1>
+<%end%>
+<br>
+<h3>Name: <%=@user.name%></h3>
+<h3>Bio: <%=@user.bio%></h3>
+<br>
+  
+<%if session[:email] == @user.email %> 
+  <h4><a href="./edit">Edit Profile</a> / <a href="/guides/<%=@user.id%>/new">Create a New Guide</a> </h4>
+<%end%>
   <br>
   <br>
-  <h5>Name: <%=@user.name%></h5>
-  <h5>Bio: <%=@user.bio%></h5>
   <br>
-  <br>
-  <%if user.guides.count == 0%>
-  <h6>Looks like <%=@user.name%> hasn't made any guides yet!</h6>
-  <%else%>
+  
+<h2>Guides:</h2>
+<%if @user.guides.count == 0%>
+  <h6>No guides yet!</h6>
+<%else%>
   <%@user.guides.each do |guide|%>
-  <a href="/guides/view/<%=@guide.id%>"><%=guide.city%>: <%=guide.name%></a>
-  <%end%>
+  <h4> <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a> </h4>
+  <%if session[:email] == @user.email %>
+    <a href="/guides/<%=guide.id%>/edit">Edit Guide</a>
+    <form action="/guides/<%=guide.id%>/delete" method="POST">
+      <input type="submit" value="Delete Guide">
+    </form>
+    <%end%>
   <%end%>
 <%end%>
 
-<form action="/guides/<%=@user.id%>/delete" method="POST">
+<%if session[:email] == @user.email %>
+  <form action="/guides/<%=@user.id%>/delete" method="POST">
     <input type="submit" value="Delete All Guides">
+<%end%>
   <br>
   <br>
   <br>
