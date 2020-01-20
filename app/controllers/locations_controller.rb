@@ -14,4 +14,7 @@ class LocationsController < ApplicationController
     erb :"guides/view"
   end
   
+  get '/locations/:id/edit' do 
+    @location = Location.find(params[:id])
+  
 end

@@ -22,9 +22,10 @@
       <input type="checkbox" name="guide[city_ids][]" id="city_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
     <%end%>
       
+      <h4>Guide Locations:</h4>
     <%@locations.each do |item|%>
       <p><%=item.name%></p>
-      <input type="text" name="location[names]" id="location_name" value="<%=item.name %>">
+      <input type="text" name="location[name]" id="location_name" value="<%=item.name %>">
       <p><%=item.address%></p>
       <input type="text" name="location[address]" id="location_name" value="<%=item.address %>">
       <p><%=item.description%></p>
@@ -35,6 +36,7 @@
       <input type="text" name="location[location_type_id]" id="location_name" value="<%=type.name%>">
       <%end%>
       <%end%>
+      <a href="/locations/<%=item.id%>/edit">Edit this location</a>
     <%end%>
       
     <input type="submit" value="Edit Guide">

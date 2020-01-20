@@ -1,0 +1,20 @@
+<h2>Edit a Single Location</h2>
+
+    <%@locations.each do |item|%>
+      <p><%=item.name%></p>
+      <input type="text" name="location[name]" id="location_name" value="<%=item.name %>">
+      <p><%=item.address%></p>
+      <input type="text" name="location[address]" id="location_name" value="<%=item.address %>">
+      <p><%=item.description%></p>
+      <input type="text" name="location[description]" id="location_name" value="<%=item.description %>">
+      <%@location_types.each do |type|%>
+      <%if type.id == item.location_type_id%>
+      <p><%=type.name%></p>
+      <input type="text" name="location[location_type_id]" id="location_name" value="<%=type.name%>">
+      <%end%>
+      <%end%>
+      <a href="/locations/<%=item.id%>/edit">Edit this location</a>
+    <%end%>
+      
+    <input type="submit" value="Edit Guide">
+  </form>
