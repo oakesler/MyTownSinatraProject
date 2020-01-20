@@ -11,6 +11,10 @@
     <label>Edit Your Bio:</label>
     <input type="text" name="user[bio]" id="bio" value="<%= @user.bio%>">
     <input type="submit" value="Edit Profile">
+    
+    <p>Would you like your profile and guides to be visible to non-users?</p>
+    <input type="radio" name="yes" id="yes" value="Yes">Yes</input><br>
+    <input type="radio" name="no" id="no" value="No">No</input><br>
   </form>
   
 <a href="/users/<%=@user.id%>/">Back to Profile</a>

@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   end
   
   patch '/users/:id' do
+    binding.pry
     @user = User.find(params[:id])
     @user.update(params["user"])
     @user.save
