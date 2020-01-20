@@ -14,21 +14,32 @@
   
   <p>[Existing Cities:]</p>
   <% @cities.each do |city| %>
+  <%city_array = [ ]%>
+  <%if !city_array.include?(city.name) && !!city.name.scan(/\w/)%>
   <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
+  <%city_array << city.name%>
   <% end %>
+  <%end%>
   <br>
   <h3>Now start adding locations and descriptions! (minimum three)</h3>
   
   <h4>Location #1</h4>
   
   <input type="text" name="location_1[name]" id="new_location_name_1" placeholder="Location Name:"></input>
-  
+  <br>
   <p>[Existing Location Names]</p>
+  <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%end%>
   <% end %>
   <br>
+  
+  
+  
+  
   
   <input type="text" name="location_1[address]" id="new_location_address_1" placeholder="Address/Zipcode"></input>
   <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
@@ -53,11 +64,14 @@
   <h4>Location #2</h4>
 
   <input type="text" name="location_2[name]" id="new_location_name_2" placeholder="Location Name:"></input>
-  
+  <br>
   <p>[Existing Location Names]</p>
+  <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <input type="checkbox" name="location_2[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%end%>
   <% end %>
   <br>
   
@@ -70,7 +84,7 @@
   <br>
   <br>
   <input type="text" name="location_2[type]" id="new_location_type_2" placeholder="Location Type"></input>
-   
+  <br>
   <p>[Existing Location Types]</p>
   <% @location_types.each do |item| %>
     <input type="checkbox" name="location_2[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
@@ -84,12 +98,16 @@
   
   <br>
   <input type="text" name="location_3[name]" id="new_location_name_3" placeholder="Location Name:"></input>
-  
+  <br>
   <p>[Existing Location Names]</p>
+  <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <input type="checkbox" name="location_3[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%end%>
   <% end %>
+  
   <br>
   <input type="text" name="location_3[address]" id="new_location_address_3" placeholder="Location/Address:"></input>
   <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
