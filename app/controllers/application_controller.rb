@@ -10,6 +10,11 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
   
+  get '/:id/logout' do 
+    @user = User.find(params[:id])
+    self.logout
+  end
+  
 helpers do 
   def logged_in?
     !!current_user
@@ -33,7 +38,7 @@ helpers do
   def logout
     session.clear
     #emailing them to let them know they logged out
-    redirect "/posts"
+    redirect "/"
   end
  end
 end

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   post "/users/:id" do 
     @user = User.find(params[:id])
-    @user.name = params[:name].
+    @user.name = params[:name]
     @user.bio = params[:bio]
     @user.save
     erb :"users/view"
@@ -67,11 +67,6 @@ class UsersController < ApplicationController
     @user.update(params["user"])
     @user.save
     erb :"/users/view"
-  end
-  
-  get '/logout' do 
-    session.clear
-    redirect "/"
   end
 end
   
