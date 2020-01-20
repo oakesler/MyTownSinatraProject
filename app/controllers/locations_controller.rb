@@ -26,13 +26,12 @@ class LocationsController < ApplicationController
     if !!params["location"]["location_type_id"]
       @type = LocationType.create(name: params["location"]["location_type_id"])
     end
-    hash = {:name => , :address => , :description => , :location_type_id => }
-    
     @location = Location.find(params[:id])
     @guide = Guide.find(@location.guide_id)
     @user = User.find(@guide.user_id)
     @city = City.find(@guide.city_id)
-    @location.update(params["location"])
+    hash = {:id => "#{@location.id}", :name => params["location"]["name"], :address => params["location"]["address"], :city_id => "#{@city.id}", :user_id => "#{@user.id}", :guide_id => "#{@guide.id}", :description => params["location"]["description"], :location_type_id => "#{@type.id}"}
+    @location.update(hash)
     @location.save
     erb :"/guides/view"
   end
