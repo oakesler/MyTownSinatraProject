@@ -22,7 +22,9 @@ class LocationsController < ApplicationController
   end
   
    patch '/locations/:id' do
-    if !!params["location"]["location_type_id"]
+    if params["location"]["location_type_id"] == ""
+      @type = LocationType.find(params["location"]["location_types"][0])
+    else 
       @type = LocationType.create(name: params["location"]["location_type_id"])
     end
     @location = Location.find(params[:id])
