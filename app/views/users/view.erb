@@ -18,6 +18,9 @@
   <h4> <a href="/guides/<%=guide.id%>"><%=guide.city%>: <%=guide.name%></a> </h4>
   
   <a href="/guides/<%=guide.id%>/edit">Edit Guide</a>
+  <form action="/guides/<%=guide.id%>/delete" method="POST">
+    <input type="submit" value="Delete Guide">
+  </form>
   <br>
   <%end%>
   <%end%>
@@ -37,6 +40,9 @@
   <%end%>
   <%end%>
 <%end%>
+
+<form action="/guides/<%=@user.id%>/delete" method="POST">
+    <input type="submit" value="Delete Guide">
   <br>
   <br>
   <br>

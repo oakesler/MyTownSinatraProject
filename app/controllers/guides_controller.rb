@@ -113,17 +113,24 @@ class GuidesController < ApplicationController
     erb :"/users/view"
   end
   
-  post '/guides/:id/delete' do 
-    @guide = Guide.find(params[:id])
-    @user = User.find(@guide.user_id)
-    @guide.locations.each do |item|
-      item.location_type_id.destroy
-      item.destroy
-    end
-    @city = City.find(@guide.city_id)
-    @city.destroy
-    @guide.destroy
+  #post '/guides/:id/delete' do 
+    #@guide = Guide.find(params[:id])
+    #@user = User.find(@guide.user_id)
+    #@guide.locations.each do |item|
+      #item.location_type_id.destroy
+      #item.destroy
+    #end
+    #@guide.destroy
     
-    erb :"users/#{@user.id}/view"
+    #erb :"users/view"
+  #end
+  
+  post '/guides/:id/delete' do
+    @user = User.find(params[:id])
+    City.destroy_all
+    Location.destroy_all
+    Guide.destroy_all
+    LocationType.destroy_all
+    erb :"users/view"
   end
 end
