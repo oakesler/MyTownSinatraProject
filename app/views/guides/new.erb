@@ -13,8 +13,8 @@
   <input type="text" name= "city[name]" id="new_city_name" placeholder="New City:">
   
   <p>[Existing Cities:]</p>
-  <% @cities.each do |city| %>
   <%city_array = [ ]%>
+  <% @cities.each do |city| %>
   <%if !city_array.include?(city.name) && !!city.name.scan(/\w/)%>
   <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
   <%city_array << city.name%>
@@ -53,12 +53,16 @@
   <input type="text" name="location_1[type]" id="new_location_type_1" placeholder="Location Type:"></input>
    
   <p>[Existing Location Types]</p>
+  <%type_array = []%>
   <% @location_types.each do |item| %>
-    <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%type_array << item.name%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+      <%end%>
     <br>
   <% end %>
   <br>
-  
+
   <p>-----------------------------------------------------------------------------------------</p>
   
   <h4>Location #2</h4>
