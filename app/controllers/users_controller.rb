@@ -4,6 +4,23 @@ class UsersController < ApplicationController
     erb :'users/new.html'
   end
   
+   get '/users/:id/' do
+    @user = User.find(params[:id])
+    if !@user.name
+      erb :"users/new"
+    else 
+      erb :"users/view"
+    end
+  end
+  
+  post "/users/:id" do 
+    @user = User.find(params[:id])
+    @user.name = params[:name]
+    @user.bio = params[:bio]
+    erb :"users/view"
+  end
+  
+  
   post '/users' do
     @user = User.new 
     @user.email = params[:email]
@@ -36,7 +53,6 @@ class UsersController < ApplicationController
   end
   
   get '/users/:id/' do
-    binding.pry
     @user = User.find(params[:id])
     if !@user.name
       erb :"users/new"
@@ -46,7 +62,6 @@ class UsersController < ApplicationController
   end
   
   patch '/users/:id' do
-    binding.pry
     @user = User.find(params[:id])
     @user.update(params["user"])
     @user.save

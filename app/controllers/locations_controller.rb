@@ -22,7 +22,6 @@ class LocationsController < ApplicationController
   end
   
    patch '/locations/:id' do
-    binding.pry
     if !!params["location"]["location_type_id"]
       @type = LocationType.create(name: params["location"]["location_type_id"])
     end

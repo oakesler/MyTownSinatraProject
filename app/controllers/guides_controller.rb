@@ -97,7 +97,6 @@ class GuidesController < ApplicationController
   end
   
   patch '/guides/:id' do
-    binding.pry
     hash = {:name => " ", :city_id => " "}
     @guide = Guide.find(params[:id])
     if !Location.find_by(name: params[:guide][:city])
