@@ -112,4 +112,12 @@ class GuidesController < ApplicationController
     @user = User.find(@guide.user_id)
     erb :"/users/view"
   end
+  
+  post '/guides/:id/delete' do 
+    @guide = Guide.find(params[:id])
+    @guide.locations.each do |item|
+      item.destroy
+    end
+    @guide.destroy
+  end
 end

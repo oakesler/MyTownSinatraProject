@@ -41,5 +41,10 @@
     <input type="submit" value="Edit Guide">
   </form>
   
+  <form action="/guides/<%=@guide.id%>/delete" method="POST">
+    <input type="submit" value="Delete Guide">
+  </form>
+    
+  
 <a href="/users/<%=@user.id%>/">Back to Profile</a>
 <a href="/guides">Explore All Guides</a>
