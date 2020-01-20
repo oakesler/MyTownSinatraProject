@@ -18,7 +18,10 @@ class LocationsController < ApplicationController
   post "/locations/:id" do
     binding.pry
     @guide = Guide.find(params[:id])
-    #@location = Location.create(name: , address: , city_id: , user_id: , guide_id: , description: , location_type_id: )
+    @city = City.find(@guide.city_id)
+    @user = User.find(@guide.user_id)
+    if params 
+    @location = Location.create(name: params["location_1"]["name"], address: params["location_1"]["address"], city_id: "#{@city.id}" , user_id: "#{@user.id}" , guide_id: "#{@guide.id}", description: params["location_1"]["description"], location_type_id: "#{@type}")
     erb :"guides/view"
   end
   
