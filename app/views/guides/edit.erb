@@ -32,9 +32,9 @@
       <%@location_types.each do |type|%>
       <%if type.id == item.location_type_id%>
       <p><%=type.name%></p>
+      <input type="text" name="location[location_type_id]" id="location_name" value="<%=type.name%>">
       <%end%>
       <%end%>
-      <input type="text" name="location[location_type_id]" id="location_name" value="<%=item.location_type_id%>">
     <%end%>
       
     <input type="submit" value="Edit Guide">

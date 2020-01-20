@@ -114,6 +114,7 @@ class GuidesController < ApplicationController
   
   
   patch '/guides/:id' do
+    binding.pry
     a = {}
     @user = User.find(params[:id])
     @guide = Guide.find_by(user_id: params[:id])
