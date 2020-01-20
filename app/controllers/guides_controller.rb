@@ -104,48 +104,17 @@ class GuidesController < ApplicationController
     #erb :"guides/new"
   #end
   
-    #patch '/users/:id' do
-    #@user = User.find(params[:id])
-    #@user.update(params["user"])
-    #@user.save
-    #erb :"/users/view"
-  #end
-
-  
-  
   patch '/guides/:id' do
-    binding.pry
-    a = {}
-    @user = User.find(params[:id])
-    @guide = Guide.find_by(user_id: params[:id])
-    if !!params["guide"]["name"]
-      a[:name] = params["figure"]["name"]
-      @guide.update(a)
+    hash = {:name => , :city_id => }
+    @guide = Guide.find(params[:id])
+    if !Location.find_by(name: params[:guide][:city])
+      @city = City.create_by(name: params["guide"]["city"])
+      hash[:city_id] = @city.id
+    else 
+      hash[:city_id] = City.find_by(name: params[:guide][:city]).id
     end
-    b = {}
-    if !!params[:city].keys.include?("city_ids")
-      b[:title_ids] = params["figure"]["title_ids"]
-      @figure.update(b)
-    end
-    if !!params["guide"]["city_name"]
-    #if params["guide"]["city"] != ""
-      City.new(name: params["figure"]["title"])
-      @guide.city_id << City.new(name: params["figure"]["title"])
-    end
-    c = {}
-    if @landmark.name != params["landmark"]["name"]
-      c[:name] = params["landmark"]["name"]
-      @landmark.update(c)
-    end
-    d = {}
-    d[:figure_id] = params[:id]
-    if params[:figure].keys.include?("landmark_ids")
-      params["figure"]["landmark_ids"].each do |item|
-        x = Landmark.find(item)
-        x.update(d)
-      end
-    end
-    redirect "/figures/#{@figure.id}"
+    @guide.update(params[:guide])
+    @guide.save
+    erb :"/users/view"
   end
 end
- 
