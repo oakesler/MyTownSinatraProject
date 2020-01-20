@@ -29,10 +29,11 @@ class LocationsController < ApplicationController
       @name = Location.find(params["location_1"]["location_name_ids"][0]).name
     end
     if !!params["location_1"]["name"]
-      @name = Location.create(name: params["location_1"]["name"])
+      @name = "#{params["location_1"]["name"]}"
     end
 
     @location = Location.create(name: @name, address: params["location_1"]["address"], city_id: "#{@city.id}" , user_id: "#{@user.id}" , guide_id: "#{@guide.id}", description: params["location_1"]["description"], location_type_id: "#{@type.id}")
+    binding.pry
     erb :"guides/view"
   end
   
