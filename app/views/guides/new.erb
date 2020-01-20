@@ -88,9 +88,13 @@
   <input type="text" name="location_2[type]" id="new_location_type_2" placeholder="Location Type"></input>
   <br>
   <p>[Existing Location Types]</p>
+  <%type_array = []%>
   <% @location_types.each do |item| %>
-    <input type="checkbox" name="location_2[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+      <br>
+      <%end%>
   <% end %>
   <br>
   
@@ -121,9 +125,13 @@
   <input type="text" name="location_3[type]" id="new_location_type_3" placeholder="Location Type"></input>
    
   <p>[Existing Location Types]</p>
+  <%type_array = []%>
   <% @location_types.each do |item| %>
-    <input type="checkbox" name="location_3[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+      <br>
+      <%end%>
   <% end %>
   <br>
   
