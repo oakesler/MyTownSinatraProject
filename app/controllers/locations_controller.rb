@@ -16,7 +16,6 @@ class LocationsController < ApplicationController
   end
   
   post "/locations/:id" do
-    binding.pry
     @guide = Guide.find(params[:id])
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
