@@ -21,3 +21,7 @@
       
     <input type="submit" value="Edit This Location">
   </form>
+  
+  <form action="/locations/<%=@location.id%>/delete" method="POST">
+    <input type="submit" value="Delete Location">
+  </form>
