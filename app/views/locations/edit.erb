@@ -9,16 +9,15 @@
   <p><%=@location.description%></p>
   <input type="text" name="location[description]" id="location_name" value="<%=@location.description %>">
   <p>Enter a new category</p>
-  <%@types.each do |type|%>
-    <%if type.id == @location.location_type_id%>
-      <p><%=type.name%></p>
-      <input type="text" name="location[location_type_id]" id="location_name" value="<%=type.name%>">
-    <%end%>
-  <%end%>
-  <p>or select one:</p>
-  <%@types.each do |item|%>
-  <input type="checkbox" name="location[location_types][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
-  <%end%>
+  <p>[Existing Location Types]</p>
+  <%type_array = []%>
+  <% @types.each do |item| %>
+    <%if !type_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
+      <br>
+      <%end%>
+  <% end %>
       
     <input type="submit" value="Edit This Location">
   </form>

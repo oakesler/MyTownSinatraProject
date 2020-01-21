@@ -1,5 +1,5 @@
 <%if @user.email == session[:email]%>
-<h2>Edit Your Guide</h2>
+<h1>Edit Your Guide</h1>
 <label>Current Guide Name:</label>
  <p><%=@guide.name%></p>
  <label>Current Guide City:</label>
@@ -19,9 +19,15 @@
     <label>...or Choose an Existing City:</label>
     <br>
     
-    <%@cities.each do |item| %>
-      <input type="checkbox" name="guide[city_ids][]" id="city_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input><br>
-    <%end%>
+    <p>[Existing Cities:]</p>
+  <%city_array = [ ]%>
+  <% @cities.each do |city| %>
+  <%if !city_array.include?(city.name.capitalize) && !!city.name.scan(/\w/)%>
+  <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name.capitalize%></input><br>
+  <%city_array << city.name.capitalize%>
+  <% end %>
+  <%end%>
+  <br>
     
     <a href="/locations/<%=@guide.id%>/new">Add new locations to this guide</a>
       

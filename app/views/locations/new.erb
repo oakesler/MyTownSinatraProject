@@ -9,11 +9,14 @@
   <input type="text" name="location_1[name]" id="new_location_name_1" placeholder="Location Name:"></input>
   
   <p>[Existing Location Names]</p>
+  <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !location_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
+      <br>
+    <%end%>
   <% end %>
-  <br>
   
   <input type="text" name="location_1[address]" id="new_location_address_1" placeholder="Address/Zipcode"></input>
   <label>Ignore this field if you selected a preexisting location (we'll take care of the address for you!)</label>
@@ -27,9 +30,13 @@
   <input type="text" name="location_1[type]" id="new_location_type_1" placeholder="Location Type:"></input>
    
   <p>[Existing Location Types]</p>
+  <%type_array = []%>
   <% @types.each do |item| %>
-    <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
-    <br>
+    <%if !type_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
+      <br>
+      <%end%>
   <% end %>
   <br>
   <input type="submit" value="Add New Location">

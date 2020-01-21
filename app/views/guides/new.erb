@@ -15,9 +15,9 @@
   <p>[Existing Cities:]</p>
   <%city_array = [ ]%>
   <% @cities.each do |city| %>
-  <%if !city_array.include?(city.name) && !!city.name.scan(/\w/)%>
-  <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name%></input><br>
-  <%city_array << city.name%>
+  <%if !city_array.include?(city.name.capitalize) && !!city.name.scan(/\w/)%>
+  <input type="checkbox" name="city[city_ids][]" id="city_<%=city.id%>" value="<%=city.id%>"><%=city.name.capitalize%></input><br>
+  <%city_array << city.name.capitalize%>
   <% end %>
   <%end%>
   <br>
@@ -30,9 +30,9 @@
   <p>[Existing Location Names]</p>
   <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
-      <%location_array << item.name%>
-      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !location_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
       <br>
     <%end%>
   <% end %>
@@ -53,9 +53,9 @@
   <p>[Existing Location Types]</p>
   <%type_array = []%>
   <% @location_types.each do |item| %>
-    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
-      <%type_array << item.name%>
-      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !type_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
       <br>
       <%end%>
   <% end %>
@@ -70,9 +70,9 @@
   <p>[Existing Location Names]</p>
   <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
-      <%location_array << item.name%>
-      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !location_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input><br>
     <%end%>
   <% end %>
   <br>
@@ -90,9 +90,9 @@
   <p>[Existing Location Types]</p>
   <%type_array = []%>
   <% @location_types.each do |item| %>
-    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
-      <%type_array << item.name%>
-      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !type_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
       <br>
       <%end%>
   <% end %>
@@ -108,9 +108,9 @@
   <p>[Existing Location Names]</p>
   <%location_array = [ ]%>
   <% @locations.each do |item| %>
-    <%if !location_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != "" %>
-      <%location_array << item.name%>
-      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !location_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != "" %>
+      <%location_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_name_ids][]" id="location_name_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input><br>
     <%end%>
   <% end %>
   
@@ -127,9 +127,9 @@
   <p>[Existing Location Types]</p>
   <%type_array = []%>
   <% @location_types.each do |item| %>
-    <%if !type_array.include?(item.name) && !!item.name.scan(/\w/) && item.name != ""%>
-      <%type_array << item.name%>
-      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name%></input>
+    <%if !type_array.include?(item.name.capitalize) && !!item.name.scan(/\w/) && item.name != ""%>
+      <%type_array << item.name.capitalize%>
+      <input type="checkbox" name="location_1[location_type_ids][]" id="location_type_<%=item.id%>" value="<%=item.id%>"><%=item.name.capitalize%></input>
       <br>
       <%end%>
   <% end %>
