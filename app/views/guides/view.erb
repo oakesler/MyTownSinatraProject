@@ -3,13 +3,9 @@
 <br>
 
 <%@guide.locations.each do |place|%>
-<h5>Location Name</h5>
-<p><%=place.name%></p>
-<h5>Category</h5>
-<p><%=LocationType.find(place.location_type_id).name%></p>
-<h5>Address</h5>
+<h4><%=place.name%></h4>
+<p>Category: <%=LocationType.find(place.location_type_id).name%></p>
 <p><%=place.address%></p>
-<h5>Description</h5>
 <p><%=place.description%></p>
 <%end%>
 
