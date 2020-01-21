@@ -16,16 +16,18 @@ class LocationsController < ApplicationController
   end
   
   post "/locations/:id" do
+    binding.pry
     @guide = Guide.find(params[:id])
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
+    
     if !!params["location_1"]["type"]
       @type = LocationType.create(name: params["location_1"]["type"])
     end
-    if params["location_1"]["location_type_ids"] != nil
+    if !!params["location_1"]["location_type_ids"]
       @type = LocationType.find(params["location_1"]["location_type_ids"][0])
     end
-    if params["location_1"]["location_name_ids"] != nil
+    if !!params["location_1"]["location_name_ids"]
       @name = Location.find(params["location_1"]["location_name_ids"][0]).name
     end
     if !!params["location_1"]["name"]
@@ -33,7 +35,6 @@ class LocationsController < ApplicationController
     end
 
     @location = Location.create(name: @name, address: params["location_1"]["address"], city_id: "#{@city.id}" , user_id: "#{@user.id}" , guide_id: "#{@guide.id}", description: params["location_1"]["description"], location_type_id: "#{@type.id}")
-    binding.pry
     erb :"guides/view"
   end
   
