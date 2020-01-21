@@ -40,6 +40,8 @@ class LocationsController < ApplicationController
   post '/locations/:id/delete' do 
     @location = Location.find(params[:id])
     @guide = Guide.find(@location.guide_id)
+    @user = User.find(@guide.user_id)
+    @city = City.find(@guide.city_id)
     @location.destroy
     erb :"guides/view"
   end
