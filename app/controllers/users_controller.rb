@@ -62,11 +62,11 @@ class UsersController < ApplicationController
     end
   end
   
-  patch '/users/:id' do
+  patch '/users/:id/edit' do
     @user = User.find(params[:id])
     @user.update(params["user"])
     @user.save
-    erb :"/users/view"
+    erb :"users/view"
   end
   
   #post '/users/:id/delete' do

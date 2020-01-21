@@ -2,7 +2,7 @@
  <p><%=@user.name%></p>
  <p><%=@user.bio%></p>
  
-  <form action="/users/<%=@user.id%>" method="POST">
+  <form action="/users/<%=@user.id%>/edit" method="POST">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label>Edit Your Name:</label>
     <br>

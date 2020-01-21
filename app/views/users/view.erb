@@ -11,7 +11,7 @@
 <br>
   
 <%if session[:email] == @user.email %> 
-  <h4><a href="./edit">Edit Profile</a> / <a href="/guides/<%=@user.id%>/new">Create a New Guide</a> </h4>
+  <h4><a href="/users/<%=@user.id%>/edit">Edit Profile</a> / <a href="/guides/<%=@user.id%>/new">Create a New Guide</a> </h4>
 <%end%>
   <br>
   <br>
