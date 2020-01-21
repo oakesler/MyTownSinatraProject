@@ -68,5 +68,16 @@ class UsersController < ApplicationController
     @user.save
     erb :"/users/view"
   end
+  
+  #post '/users/:id/delete' do
+    #@user = User.find(params[:id])
+    #User.all.each do |account|
+      
+    #City.destroy_all
+    #Location.destroy_all
+    #Guide.destroy_all
+    #LocationType.destroy_all
+    #erb :"users/view"
+  #end
 end
   

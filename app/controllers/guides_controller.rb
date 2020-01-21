@@ -118,6 +118,7 @@ class GuidesController < ApplicationController
     Location.destroy_all
     Guide.destroy_all
     LocationType.destroy_all
+    User.destroy_all
     erb :"users/view"
   end
 end
