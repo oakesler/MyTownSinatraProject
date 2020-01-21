@@ -9,7 +9,7 @@
   <p><%=@location.description%></p>
   <input type="text" name="location[description]" id="location_name" value="<%=@location.description %>">
   <p>Enter a new category</p>
-  <input type="text" name="location[location_type_id]" id="location_name" value="<%=@location.description %>">
+  <input type="text" name="location[location_type_id]" id="location_name" value="<%=@location_id_name%>">
   <p>[Existing Location Types]</p>
   <%type_array = []%>
   <% @types.each do |item| %>

@@ -57,6 +57,7 @@ class LocationsController < ApplicationController
   get '/locations/:id/edit' do 
     @location = Location.find(params[:id])
     @types = LocationType.all
+    @location_id_name = LocationType.find(@location.location_type_id).name
     
     erb :"locations/edit"
   end
