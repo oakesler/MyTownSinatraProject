@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   
   get '/locations' do
+    binding.pry
     @types = LocationType.all
     @locations = Location.all
     @users = User.all

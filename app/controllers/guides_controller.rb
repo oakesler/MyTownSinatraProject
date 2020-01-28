@@ -33,7 +33,7 @@ class GuidesController < ApplicationController
     #LOCATION 1#
     if params["location_1"].include?("location_type_ids")
       @location_type_1 = LocationType.find(params[:location_1][:location_type_ids][0])
-    else 
+    else
       @location_type_1 = LocationType.create(name: params["location_1"]["type"])
     end
     if params[:location_1].keys.include?("location_name_ids") 
@@ -48,6 +48,8 @@ class GuidesController < ApplicationController
     #LOCATION 2
     if params["location_2"].include?("location_type_ids")
       @location_type_two = LocationType.find(params[:location_2][:location_type_ids][0])
+      elsif !!LocationType.find_by(name: params["location_2"]["type"])
+      @location_type_two = LocationType.find_by(name: params["location_2"]["type"])
     else 
       @location_type_two = LocationType.create(name: params["location_2"]["type"])
     end
@@ -63,6 +65,8 @@ class GuidesController < ApplicationController
     #LOCATION 3
     if params["location_3"].include?("location_type_ids")
       @location_type_three = LocationType.find(params["location_3"]["location_type_ids"][0])
+      elsif !!LocationType.find_by(name: params["location_3"]["type"])
+      @location_type_three = LocationType.find_by(name: params["location_3"]["type"])
     else 
       @location_type_three = LocationType.create(name: params["location_3"]["type"])
     end
