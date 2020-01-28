@@ -1,11 +1,11 @@
 class LocationsController < ApplicationController
   
-  get '/locations' do
-    @types = []
-    type_list = LocationType.all
-    type_list.each do |type|
-      if !@types.include?(type)
-        @types << type 
+ get '/locations' do
+   @types = []
+   type_list = LocationType.all
+   type_list.each do |type|
+     if !@types.include?(type)
+       @types << type
       end
     end
     @locations = Location.all
