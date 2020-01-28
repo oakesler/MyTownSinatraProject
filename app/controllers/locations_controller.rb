@@ -4,8 +4,8 @@ class LocationsController < ApplicationController
    @types = []
    type_list = LocationType.all
    type_list.each do |type|
-     if !@types.include?(type)
-       @types << type
+     if !@types.include?(type.name)
+       @types << type.name
       end
     end
     @locations = Location.all
