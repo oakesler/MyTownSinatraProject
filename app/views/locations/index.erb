@@ -1,9 +1,9 @@
 <h2>All Locations(by Type)</h2>
 
 <%@types.each do |type|%>
-<h3>*<%=type.name%>*</h3>
+<h3>*<%=type%>*</h3>
 <%@locations.each do |place|%>
-<%if place.location_type_id == type.id%>
+<%if LocationType.find(place.location_type_id).name == type%>
 <h4><%=place.name%></h4>
 <p><%=place.address%></p>
 <p><%=User.find(place.user_id).name%> thought: <%=place.description%></p>
