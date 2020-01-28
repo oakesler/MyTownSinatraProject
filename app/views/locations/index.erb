@@ -1,7 +1,7 @@
 <h2>All Locations(by Type)</h2>
 
 <%@types.each do |type|%>
-<h3><%=type.name%></h3>
+<h3>*<%=type.name%>*</h3>
 <%@locations.each do |place|%>
 <%if place.location_type_id == type.id%>
 <h4><%=place.name%></h4>

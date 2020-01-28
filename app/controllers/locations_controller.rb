@@ -16,11 +16,12 @@ class LocationsController < ApplicationController
   end
   
   post "/locations/:id" do
+    binding.pry
     @guide = Guide.find(params[:id])
     @city = City.find(@guide.city_id)
     @user = User.find(@guide.user_id)
     
-    if !!params["location_1"]["type"]
+    if params["location_1"]["type"] =! "" 
       @type = LocationType.create(name: params["location_1"]["type"])
     end
     if !!params["location_1"]["location_type_ids"]
